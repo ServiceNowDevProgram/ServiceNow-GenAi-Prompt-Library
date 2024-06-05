@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-05 18:29:50</sys_created_on>
+        <sys_id>db92b26ac3664a10c9bcbe2bb0013132</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_ehd_servic_0_vote.x_snc_ehd_servic_0.moderator</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_security_acl display_value="x_snc_ehd_servic_0_vote">db92b26ac3664a10c9bcbe2bb001312f</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_db92b26ac3664a10c9bcbe2bb0013132</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-05 18:29:50</sys_updated_on>
+        <sys_user_role display_value="x_snc_ehd_servic_0.moderator" name="x_snc_ehd_servic_0.moderator">fb61e00ac32a8610c9bcbe2bb0013192</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

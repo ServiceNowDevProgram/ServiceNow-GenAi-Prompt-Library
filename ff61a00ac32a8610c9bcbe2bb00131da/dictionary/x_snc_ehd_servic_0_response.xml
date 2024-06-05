@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="df133e6ac3664a10c9bcbe2bb00131f0" label="Response" max_length="40" name="x_snc_ehd_servic_0_response" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Prompt" max_length="32" name="prompt" reference="x_snc_ehd_servic_0_prompt" type="reference"/>
+        <index name="index">
+            <element name="prompt"/>
+        </index>
+    </element>
+</database>

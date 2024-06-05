@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e1b37aaac3664a10c9bcbe2bb0013180" label="Category" max_length="40" name="x_snc_ehd_servic_0_category" type="collection">
+        <element default="true" label="Active" max_length="255" name="active" type="boolean"/>
+        <element label="Description" max_length="1024" name="description" type="string"/>
+        <element label="Keywords" max_length="1024" name="keywords" type="string"/>
+        <element label="Name" max_length="40" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+    </element>
+</database>

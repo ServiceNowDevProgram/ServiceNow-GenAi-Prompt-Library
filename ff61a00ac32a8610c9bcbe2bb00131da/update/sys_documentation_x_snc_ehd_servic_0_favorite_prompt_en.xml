@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="prompt" label="Prompt" language="en" table="x_snc_ehd_servic_0_favorite">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>prompt</element>
+            <help/>
+            <hint/>
+            <label>Prompt</label>
+            <language>en</language>
+            <name>x_snc_ehd_servic_0_favorite</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>earl.duque</sys_created_by>
+            <sys_created_on>2024-06-05 18:46:07</sys_created_on>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Prompt</sys_name>
+            <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_ehd_servic_0_favorite_prompt_en</sys_update_name>
+            <sys_updated_by>earl.duque</sys_updated_by>
+            <sys_updated_on>2024-06-05 18:46:08</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

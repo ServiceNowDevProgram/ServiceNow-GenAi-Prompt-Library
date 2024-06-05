@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_snc_ehd_servic_0_category">x_snc_ehd_servic_0_category</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>CAT</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-05 18:34:38</sys_created_on>
+        <sys_id>a9b37aaac3664a10c9bcbe2bb0013198</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CAT</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sys_number_a9b37aaac3664a10c9bcbe2bb0013198</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-05 18:34:38</sys_updated_on>
+    </sys_number>
+</record_update>
