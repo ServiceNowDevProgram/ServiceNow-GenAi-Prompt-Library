@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_analytics_bucket">
+    <sys_analytics_bucket action="INSERT_OR_UPDATE">
+        <analytics_channel display_value="web">6496ef61c7001010393d265c95c260b9</analytics_channel>
+        <application_name>ServiceNow Generative AI Prompt Library</application_name>
+        <bucket_document_id>3da20d1b93ea0a10b653ffbd1dba10f4</bucket_document_id>
+        <bucket_metadata/>
+        <bucket_table_name>sp_portal</bucket_table_name>
+        <bucket_type>service_portal</bucket_type>
+        <enable_unauthenticated_user_tracking>false</enable_unauthenticated_user_tracking>
+        <enabled>true</enabled>
+        <internal_name_for_index>x_snc_ehd_servic_0.sp_portal.3da20d1b93ea0a10b653ffbd1dba10f4</internal_name_for_index>
+        <sys_class_name>sys_analytics_bucket</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-07 18:17:15</sys_created_on>
+        <sys_id>26e2415b93ea0a10b653ffbd1dba1047</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Generative AI Prompt Library</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sys_analytics_bucket_26e2415b93ea0a10b653ffbd1dba1047</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-07 18:17:15</sys_updated_on>
+    </sys_analytics_bucket>
+</record_update>

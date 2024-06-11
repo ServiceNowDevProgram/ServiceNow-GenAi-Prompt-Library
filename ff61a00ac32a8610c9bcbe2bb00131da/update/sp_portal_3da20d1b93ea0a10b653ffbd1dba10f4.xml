@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
+    <sp_portal action="INSERT_OR_UPDATE">
+        <css_variables/>
+        <dark_theme/>
+        <default>false</default>
+        <enable_ais>false</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
+        <enable_favorites>false</enable_favorites>
+        <hide_portal_name>false</hide_portal_name>
+        <homepage display_value="prompt">0d82c9d793ea0a10b653ffbd1dba10b4</homepage>
+        <icon/>
+        <kb_knowledge_base/>
+        <kb_knowledge_page/>
+        <login_page/>
+        <logo/>
+        <notfound_page display_value="404">3c2c9063cb11020000f8d856634c9c1f</notfound_page>
+        <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
+        <sc_catalog/>
+        <sc_catalog_page/>
+        <sc_category_page/>
+        <search_application/>
+        <search_results_configuration/>
+        <sp_chat_queue/>
+        <sp_rectangle_menu/>
+        <sys_class_name>sp_portal</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-07 18:17:15</sys_created_on>
+        <sys_id>3da20d1b93ea0a10b653ffbd1dba10f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNow Generative AI Prompt Library</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sp_portal_3da20d1b93ea0a10b653ffbd1dba10f4</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-07 18:17:15</sys_updated_on>
+        <theme/>
+        <title>ServiceNow Generative AI Prompt Library</title>
+        <ts_index_group/>
+        <url_suffix>ai</url_suffix>
+    </sp_portal>
+    <sys_translated_text action="delete_multiple" query="documentkey=3da20d1b93ea0a10b653ffbd1dba10f4"/>
+</record_update>

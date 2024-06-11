@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.prompt-block{
+  margin-bottom: 1rem;
+}
+
+.date{
+  text-align: right;
+}
+
+.block-main{
+  background-color: #2E2E2E;
+  color: #B0B0B0;
+  padding: 0.5rem;
+}
+
+.category, .author{
+  color: #03DAC6;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>prompt</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>prompt</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	
+	data.debug = false;
+	data.row = parseInt($sp.getParameter('row')) || 0;
+	data.listlength = parseInt($sp.getParameter('listlength')) || 10;
+	data.promptFields = [
+		'prompt',
+		'score',
+		'category',
+		'category.name',
+		'short_description',
+		'description',
+		'sys_created_on',
+		'opened_by.name',
+		'parent',
+		'parent.number',
+		'number',
+	];
+
+	data.prompts = [];
+	const promptGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+	promptGr.orderByDesc('number');
+	promptGr.chooseWindow(data.row, data.row + data.listlength);
+	promptGr.query();
+	while (promptGr.next()){
+		const prompt = {};
+		for (let i of data.promptFields){
+			prompt[i] = (promptGr.getElement(i) + "").trim();
+		}
+		prompt.parents = [];
+		let thisParentId = prompt.parent;
+		while (thisParentId != ''){
+			const parentGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+			if (parentGr.get(thisParentId)){
+				const parent = {
+					sys_id: parentGr.getUniqueValue(),
+					number: parentGr.getValue('number'),
+					author: parentGr.getElement('opened_by.name') + '',
+					parentId: parentGr.getValue('parent'),
+				};
+				prompt.parents.push(parent);
+				thisParentId = parentGr.getValue('parent') || '';
+			}
+		}
+		data.prompts.push(prompt);
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-07 18:15:31</sys_created_on>
+        <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
+        <sys_mod_count>88</sys_mod_count>
+        <sys_name>prompt</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-10 18:55:38</sys_updated_on>
+        <template><![CDATA[<div>
+  <div ng-repeat="prompt in data.prompts" class="prompt-block">
+    <div class="block-main">
+      <div class="row">
+        <!-- <div ng-repeat="promptField in data.promptFields">
+      {{promptField}}: {{prompt[promptField]}}
+    </div> -->
+        <div class="prompt col-sm-10 col-xs-10">
+          {{prompt.prompt}}
+        </div>
+        <div class="score col-sm-1 hidden-xs">
+          {{prompt.score}}
+        </div>
+        <div class="vote col-sm-1 hidden-xs">
+          <div class="vote-button">
+            Up
+          </div>
+          <div class="vote-button">
+            Down
+          </div>
+        </div>
+        <div class="mobile-vote col-xs-2 hidden-sm">
+          <div class="score">
+            {{prompt.score}}
+          </div>
+          <div class="vote">
+            <div class="vote-button">
+              Up
+            </div>
+            <div class="vote-button">
+              Down
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="category" ng-if="prompt['category.name'] !== ''">
+        {{prompt["category.name"]}}
+      </div>
+      <div class="author">
+        {{prompt.number}} by {{prompt["opened_by.name"]}}
+      </div>
+      <div class="history" ng-if="prompt.parent !==''">
+        Fork from {{prompt.parents[prompt.parents.length- 1].number}} by {{prompt.parents[prompt.parents.length- 1].author}}
+      </div>
+    </div>
+    <div class="block-footer">
+      <div class="date">
+        {{prompt.sys_created_on}}
+      </div>
+    </div>
+    <pre ng-if="data.debug === true">{{prompt}}</pre>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
