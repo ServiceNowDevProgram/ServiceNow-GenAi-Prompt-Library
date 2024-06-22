@@ -6,23 +6,23 @@
         <bootstrap_alt>false</bootstrap_alt>
         <class_name/>
         <container_class_name/>
-        <name>ServiceNow Generative AI Prompt Library - Container 1</name>
+        <name>SN GenAI Prompt Library - Prompt - Container 1</name>
         <order>1</order>
         <semantic_tag/>
-        <sp_page display_value="library">0d82c9d793ea0a10b653ffbd1dba10b4</sp_page>
+        <sp_page display_value="prompt">902d233bc336c610c9bcbe2bb00131a9</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>
         <sys_created_by>earl.duque</sys_created_by>
-        <sys_created_on>2024-06-07 18:15:31</sys_created_on>
-        <sys_id>4182c9d793ea0a10b653ffbd1dba10b8</sys_id>
+        <sys_created_on>2024-06-22 06:13:37</sys_created_on>
+        <sys_id>502d233bc336c610c9bcbe2bb00131ac</sys_id>
         <sys_mod_count>1</sys_mod_count>
-        <sys_name>ServiceNow Generative AI Prompt Library - Container 1</sys_name>
+        <sys_name>SN GenAI Prompt Library - Prompt - Container 1</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
-        <sys_update_name>sp_container_4182c9d793ea0a10b653ffbd1dba10b8</sys_update_name>
+        <sys_update_name>sp_container_502d233bc336c610c9bcbe2bb00131ac</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-22 06:05:23</sys_updated_on>
+        <sys_updated_on>2024-06-22 06:14:05</sys_updated_on>
         <title/>
         <width>container</width>
     </sp_container>

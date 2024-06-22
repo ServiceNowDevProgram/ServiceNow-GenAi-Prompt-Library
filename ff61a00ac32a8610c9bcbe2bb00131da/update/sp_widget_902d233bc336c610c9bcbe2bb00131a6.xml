@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($uibModal, $scope, spUtil) {
+	/* widget controller */
+	var c = this;
+
+	c.goHome = function(sys_id){
+		top.window.location = "?id=library";
+	}
+
+	c.copyToClipboard = function(prompt){
+		try {
+			navigator.clipboard.writeText(prompt);
+			spUtil.addInfoMessage('Prompt copied to clipboard');
+		} catch (err) {
+			console.error('Failed to copy: ', err);
+		}
+	}
+
+	c.vote = function(sys_id){
+		c.data.voteClicked = sys_id;
+		c.server.update().then(function() {
+			c.data.voteClicked = '';
+		});
+	}
+
+	c.submitComment = function (sys_id, userInput){
+		c.data.newComment = {
+			sys_id: sys_id,
+			userInput: userInput,
+		}
+		c.server.update().then(function() {
+			c.data.userInput = "";
+			c.datanewComment = {};
+		});
+	}
+
+	c.addPrompt = function(prompt= {}, fork = false) {
+		c.data.fork = fork;
+		/*const promptMessage = `Assume users will copy and paste your code as-is into their Generative AI service.<br>
+Whenever the user should update specific text, wrap the instruction with brackets.<br>
+For example: [INPUT YOUR NAME HERE]`;*/
+		c.data.oldPromptText = prompt.prompt;
+		c.data.newPromptText = prompt.prompt;
+		c.data.newPromptParent = prompt.sys_id;
+		c.data.newPromptNumber = prompt.number;
+		c.data.newPromptCategory = prompt.category;
+		c.data.newPromptCategoryName = prompt["category.name"];
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'newPrompt',
+			scope: $scope
+		});
+	}
+
+	c.submitPrompt = function(){
+		c.server.update().then(function(){
+			c.data.newPromptText = '';
+			c.data.newPromptCategory = '';
+			c.data.newPromptParent = '';
+			c.closeModal();
+			top.window.location = "?id=prompt&sys_id=" + c.data.newSysId;
+			spUtil.addInfoMessage('Your prompt has been submitted!');
+		});
+	}
+
+	c.closeModal = function() {
+		c.modalInstance.close();
+	}
+
+	c.openHistory = function(prompt){
+		$scope.prompt = prompt;
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'historyModal',
+			scope: $scope,
+		})
+	}
+
+	if (c.data.debug) console.log(c.data);
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.page-intro{
+  color: #000000;
+  padding: 2rem;
+}
+
+.prompt-block{
+  margin-bottom: 1rem;
+  //margin-left: 1rem;
+  //margin-right: 1rem;
+}
+
+.date{
+  text-align: right;
+}
+
+.author-block{
+  margin-bottom: 2rem;
+}
+.author-block-avatar{
+  float: left;
+  padding-right: 1rem;
+}
+
+.author-block-author{
+  font-weight: bold;
+}
+
+.author-block-category{
+  color: #333333;
+  font-size: 1rem;
+}
+
+.author-block-score{
+  float: right;
+  font-size:3rem;
+  padding-right: 1rem;
+}
+
+.block-main{
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 2rem;
+  border-radius: 25px;
+}
+
+.category, .author{
+  color: #000000;
+}
+
+.prompt-info{
+  margin-bottom: 1rem;
+}
+
+.prompt-info-header{
+  color: #333333;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.prompt-info-detail{
+}
+
+.history {
+  background-color: #ADD8E6;
+  padding: 1rem;
+  margin: 1.5rem 0 1.5rem 0;
+  border-radius: 15px;
+  font-size: 1rem;
+}
+
+.engagement{
+  //font-size: 1rem;
+}
+.engagement-button, .home-button{
+  margin-right: 1rem;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: #F5F5F5;
+}
+
+.engagement-button:hover, .history:hover{
+  background-color: #DEDCDA;
+}
+
+.submit-button:hover, .home-button:hover{
+  background-color: #FFB6C1;
+}
+
+.col-sm-3, .col-xs-3, .col-xs-9, .col-sm-9{
+  padding-right: 0px;
+}
+
+.voted{
+  background-color: #FFB6C1;
+}
+
+.comment-count{
+  padding-right: 3px;
+}
+
+.fork{
+  border-radius: 3px;
+  padding: 5px;
+  float:right;
+}
+
+.fork:hover{
+  background-color: #DEDCDA;
+}
+
+.votes{
+  font-size: 1.5rem;
+  //vertical-align: middle;
+}
+
+.limited-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prompt-button {
+  text-align: right !important;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>prompt</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>prompt</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.sys_id = $sp.getParameter('sys_id');
+
+	//configuration
+	data.debug = false;
+	data.userId = gs.getUserID();
+	data.promptFields = [
+		'prompt',
+		'category',
+		'category.name',
+		'short_description',
+		'description',
+		'sys_created_on',
+		'opened_by.name',
+		'opened_by',
+		'parent',
+		'parent.number',
+		'number',
+		'sys_id',
+	];
+
+	if (input?.newComment){
+		const newCommentGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		if (newCommentGr.get(input.newComment.sys_id)){
+			newCommentGr.comments = input.newComment.userInput;
+			newCommentGr.update();
+		}
+		data.newComment = {};
+	}
+
+	if (input?.voteClicked){
+		const newVoteGr = new GlideRecord('x_snc_ehd_servic_0_vote');
+		newVoteGr.addQuery('prompt', input.voteClicked);
+		newVoteGr.addQuery('user', data.userId);
+		newVoteGr.query();
+		if (newVoteGr.next()){
+			newVoteGr.deleteMultiple();
+		} else {
+			newVoteGr.newRecord();
+			newVoteGr.setValue('prompt', input.voteClicked);
+			newVoteGr.setValue('user', data.userId);
+			newVoteGr.insert();
+		}
+	}
+
+	if (input?.newPromptText && input?.newPromptCategory){
+		const newPromptGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		newPromptGr.newRecord();
+		newPromptGr.setValue('prompt', input.newPromptText);
+		newPromptGr.setValue('opened_by', data.userId);
+		newPromptGr.setValue('category', input.newPromptCategory);
+		if (input?.newPromptParent){
+			newPromptGr.setValue('parent', input.newPromptParent);
+		}
+		data.newSysId = newPromptGr.insert();
+
+		//automatically add a new vote for self
+		const newPromptVoteGr = new GlideRecord('x_snc_ehd_servic_0_vote');
+		newPromptVoteGr.newRecord();
+		newPromptVoteGr.setValue('prompt', data.newSysId);
+		newPromptVoteGr.setValue('user', data.userId);
+		newPromptVoteGr.insert();
+	}
+
+	data.prompts = [];
+	const promptGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+	promptGr.addQuery('sys_id', data.sys_id);
+	promptGr.query();
+	while (promptGr.next()){
+		const prompt = {};
+		for (let i of data.promptFields){
+			prompt[i] = (promptGr.getElement(i) + "").trim();
+		}
+
+		data.number = prompt.number;
+		data.author = prompt['opened_by.name'];
+
+		//get parents
+		prompt.parents = [];
+		let thisParentId = prompt.parent;
+		while (thisParentId != ''){
+			const parentGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+			if (parentGr.get(thisParentId)){
+				const parent = {
+					sys_id: parentGr.getUniqueValue(),
+					number: parentGr.getValue('number'),
+					author: parentGr.getElement('opened_by.name') + '',
+					parentId: parentGr.getValue('parent'),
+					prompt: parentGr.getValue('prompt'),
+				};
+				prompt.parents.push(parent);
+				thisParentId = parentGr.getValue('parent') || '';
+			}
+		}
+
+		//get children
+		prompt.children = [];
+		const childGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		childGr.addQuery('parent', promptGr.getUniqueValue());
+		childGr.orderByDesc('number');
+		childGr.query();
+		while (childGr.next()){
+			const child = {
+				sys_id: childGr.getUniqueValue(),
+				number: childGr.getValue('number'),
+				author: childGr.getElement('opened_by.name') + '',
+				prompt: childGr.getValue('prompt'),
+			};
+			prompt.children.push(child);
+		}
+
+		//check for vote
+		const voteGr = new GlideRecord('x_snc_ehd_servic_0_vote');
+		voteGr.addQuery('user', data.userId);
+		voteGr.addQuery('prompt', prompt.sys_id)
+		voteGr.query();
+		if (voteGr.next()){
+			prompt.voted = true;
+			prompt.score = voteGr.getRowCount();
+		} else {
+			prompt.voted = false;
+			prompt.score = 0;
+		}
+
+		//get comments
+		data.comments = promptGr.comments.getJournalEntry(-1).replaceAll("(Additional comments)","").split('\n\n').filter(item => item.trim() !== "").map(str => str.split('\n'));
+
+		data.prompts.push(prompt);
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-22 06:13:36</sys_created_on>
+        <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
+        <sys_mod_count>65</sys_mod_count>
+        <sys_name>prompt</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-22 07:35:27</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="page-intro">
+    <div>
+      <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
+    </div>
+    <div class="h1">
+      {{data.number}} by {{data.author}}
+    </div>
+    <div>
+      Welcome to the community-driven hub for ServiceNow enthusiasts! ]]>🚀<![CDATA[ Designed for innovation and collaboration, our library offers a diverse collection of AI-generated prompts tailored for a variety of ServiceNow applications. Immerse yourself in this shared resource to discover, contribute, and optimize AI responses, enhancing your ServiceNow setups and workflows.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="section-block">
+        <div ng-repeat="prompt in data.prompts" class="prompt-block">
+          <div class="block-main">
+            <div class="author-block">
+              <span class="author-block-avatar"><sn-avatar class="avatar-medium" primary="prompt.opened_by"></sn-avatar></span>
+              <div class="author-block-score">
+                <span class="votes">votes:</span>{{prompt.score}}
+              </div>
+              <div class="author-block-author">
+                {{prompt["opened_by.name"]}}
+              </div>
+              <div class="author-block-category">
+                in <span class="category" ng-if="prompt['category.name'] !== ''">{{prompt["category.name"]}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="prompt col-xs-9">
+                {{prompt.prompt}}
+              </div>
+              <div class="vote col-xs-3">
+                <div class="prompt-info">
+                  <div class="prompt-info-header">
+                    Author
+                  </div>
+                  <div class="prompt-info-detail">
+                    {{prompt["opened_by.name"]}}
+                  </div>
+                </div>
+                <div class="prompt-info">
+                  <div class="prompt-info-header">
+                    Number
+                  </div>
+                  <div class="prompt-info-detal">
+                    {{prompt["number"]}}
+                  </div>
+                </div>
+                <div class="prompt-info">
+                  <div class="prompt-info-header">
+                    Created on
+                  </div>
+                  <div class="prompt-info-detal">
+                    {{prompt.sys_created_on}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="history" ng-if="prompt.parent !==''" ng-click="c.openHistory(prompt)">
+              <!--<span class="icon-tree"></span> Fork from {{prompt.parents[prompt.parents.length- 1].number}} by {{prompt.parents[prompt.parents.length- 1].author}}-->
+              <span class="icon-tree"></span> Fork from {{prompt.parents[0].number}} by {{prompt.parents[0].author}} ({{prompt.parents.length + prompt.children.length + 1}} iterations)
+            </div>
+            <div class="engagement">
+              <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true)">
+                Fork
+              </div>
+              <span class="icon-arrow-up engagement-button" ng-class="{'voted': prompt.voted == true}" ng-click="c.vote(prompt.sys_id)"></span>
+              <span class="engagement-button"><span class="comment-count">{{data.comments.length}} comment{{prompt.comments.length == 1 ? '' : 's'}}</span></span>
+              <span class="engagement-button"ng-click="c.copyToClipboard(prompt.prompt)">copy <span class="icon-document"></span></span>
+              <!--span class="icon-share engagement-button"></span-->
+            </div>
+          </div>
+          <div class="block-footer">
+            <!--div class="date">
+              {{prompt.sys_created_on}}
+            </div-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="section-block block-main">
+        <div class="form-group">
+          <label for="multiLineTextBox">Add a comment:</label>
+          <textarea id="multiLineTextBox" class="form-control" rows="5" ng-model="data.userInput"></textarea>
+        </div>
+        <div class="prompt-button">
+          <button class="btn btn-primary" ng-click="c.submitComment(data.sys_id, data.userInput)" ng-class="{disabled: !data.userInput}">Submit</button>
+        </div>
+        <div ng-repeat="comment in data.comments">
+          <div>
+            {{comment[0]}}<br>
+            {{comment[1]}}
+          </div>
+          <hr class="dashed" ng-if="$index != data.comments.length-1">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="newPrompt">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Submit prompt</h4>
+  </div>
+  <div class="panel-body wrapper-xl">
+    <div class="form-group" ng-if="data.newPromptNumber">
+      <label for="promptParent">Forked from:</label>
+      <text class="form-control" id="promptParent" disabled>{{data.newPromptNumber}}</text>
+  </div>
+    <div ng-if="::!data.fork">
+    	Category: <sn-record-picker field="category" table="'x_snc_ehd_servic_0_category'" display-fields="'category,description'" value-field="'sys_id'" search-fields="'name'" page-size="100" ></sn-record-picker><br>
+  </div>
+    <div class="form-group" ng-if="::data.fork">
+      <label for="promptCategory">Category:</label>
+      <text class="form-control" id="promptCategory" disabled>{{data.newPromptCategoryName}}</text>
+  </div>
+    <div ng-if="data.newPromptCategory">
+    	<b>Category description</b><br>
+    	{{data.categories[data.newPromptCategory].description}}<br>
+      <b>Keywords to use in your prompt</b><br>
+      {{data.categories[data.newPromptCategory].keywords}}<br><br>
+  </div>
+    <div class="form-group">
+      <label for="promptText">Your prompt:</label>
+      <textarea class="form-control" id="promptText" rows="3" ng-model="data.newPromptText"></textarea>
+  </div>
+  </div>
+  <div class="panel-footer text-right">
+  	<button class="btn btn-primary" ng-click="c.submitPrompt()" ng-class="{disabled: !data.newPromptText || !data.newPromptCategory || (data.oldPromptText == data.newPromptText)}">${Submit Prompt}</button>
+    <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
+  </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="historyModal">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">History</h4>
+  </div>
+  <div class="panel-body wrapper-xl">
+    <div ng-repeat="child in prompt.children">
+      <a href="?id=prompt&sys_id={{child.sys_id}}" target="_self"><div><b>Fork {{$index + 1}}. {{child.author}}</b> {{child.number}}</div></a>
+      <div>
+        <textarea class="form-control" rows="5" disabled>{{child.prompt}}</textarea><br>
+      </div>
+    </div>
+    <div><b>This prompt</b></div>
+    <div>
+      <textarea class="form-control" rows="5" disabled>{{prompt.prompt}}</textarea><br>
+    </div>
+    <div ng-repeat="parent in prompt.parents">
+      <a href="?id=prompt&sys_id={{parent.sys_id}}" target="_self"><div><b>{{$index + 1}}. {{parent.author}}</b> {{parent.number}}</div></a>
+      <div>
+        <textarea class="form-control" rows="5" disabled>{{parent.prompt}}</textarea><br>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer text-right">
+      <button class="btn btn-primary" ng-click="c.closeModal()">${Close History}</button>
+    </div>
+</div>
+</script>]]></template>
+    </sp_widget>
+</record_update>

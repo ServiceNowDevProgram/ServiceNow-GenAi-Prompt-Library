@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
     <sp_portal action="INSERT_OR_UPDATE">
-        <css_variables/>
+        <css_variables>$brand-primary:#0574DE;&#13;
+$body-bg:#DEDCDA;&#13;
+$state-success-text:#5cb85c;&#13;
+$sp-homepage-bg:#fff;&#13;
+$sp-navbar-divider-color:#455464;&#13;
+$text-color:#717171;&#13;
+$sp-logo-margin-y:.5rem;&#13;
+$navbar-inverse-link-hover-color:#ffffff;&#13;
+$panel-bg:#fff;&#13;
+$brand-success:#0a5d0c;&#13;
+$navbar-inverse-bg:#0c1013;&#13;
+$brand-warning:#9E6817;&#13;
+$brand-danger:#B12F2C;&#13;
+$sp-tagline-color:#717171;&#13;
+$navbar-inverse-link-color:#bdc0c4;&#13;
+$brand-info:#0F7D8B;&#13;
+$link-color:#045AAE;&#13;
+$sp-logo-margin-x:15px;&#13;
+$btn-default-bg:#fff;&#13;
+$text-muted:#646567;</css_variables>
         <dark_theme/>
         <default>false</default>
         <enable_ais>false</enable_ais>
         <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
         <enable_favorites>false</enable_favorites>
         <hide_portal_name>false</hide_portal_name>
-        <homepage display_value="prompt">0d82c9d793ea0a10b653ffbd1dba10b4</homepage>
+        <homepage display_value="library">0d82c9d793ea0a10b653ffbd1dba10b4</homepage>
         <icon/>
         <kb_knowledge_base/>
         <kb_knowledge_page/>
@@ -27,15 +46,15 @@
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:17:15</sys_created_on>
         <sys_id>3da20d1b93ea0a10b653ffbd1dba10f4</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>ServiceNow Generative AI Prompt Library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_portal_3da20d1b93ea0a10b653ffbd1dba10f4</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-07 18:17:15</sys_updated_on>
-        <theme/>
+        <sys_updated_on>2024-06-14 18:28:04</sys_updated_on>
+        <theme display_value="Ai Prompt Library Theme">45e48921c3f60610c9bcbe2bb00131e1</theme>
         <title>ServiceNow Generative AI Prompt Library</title>
         <ts_index_group/>
         <url_suffix>ai</url_suffix>
