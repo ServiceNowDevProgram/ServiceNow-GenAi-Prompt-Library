@@ -353,14 +353,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-22 06:13:36</sys_created_on>
         <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
-        <sys_mod_count>65</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>prompt</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-22 07:35:27</sys_updated_on>
+        <sys_updated_on>2024-06-22 07:49:29</sys_updated_on>
         <template><![CDATA[<div>
   <div class="page-intro">
     <div>
@@ -421,9 +421,11 @@ For example: [INPUT YOUR NAME HERE]`;*/
                 </div>
               </div>
             </div>
-            <div class="history" ng-if="prompt.parent !==''" ng-click="c.openHistory(prompt)">
+            <div class="history" ng-if="prompt.parents.length > 0 || prompt.children.length > 0" ng-click="c.openHistory(prompt)">
               <!--<span class="icon-tree"></span> Fork from {{prompt.parents[prompt.parents.length- 1].number}} by {{prompt.parents[prompt.parents.length- 1].author}}-->
-              <span class="icon-tree"></span> Fork from {{prompt.parents[0].number}} by {{prompt.parents[0].author}} ({{prompt.parents.length + prompt.children.length + 1}} iterations)
+              <span class="icon-tree"></span>
+              <span ng-if="prompt.parents.length > 0"> {{prompt.parents.length + 1}} iteration{{prompt.parents.length == 1 ? '' : 's'}} from {{prompt.parents[0].number}} by {{prompt.parents[0].author}}.</span>
+              <span ng-if="prompt.children.length > 0"> {{prompt.children.length}} fork{{prompt.children.length == 1 ? '' : 's'}} from this.</span>
             </div>
             <div class="engagement">
               <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true)">
@@ -502,30 +504,30 @@ For example: [INPUT YOUR NAME HERE]`;*/
 <script type="text/ng-template" id="historyModal">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4 class="panel-title">History</h4>
+    <h4 class="panel-title">History (newest versions at top)</h4>
   </div>
   <div class="panel-body wrapper-xl">
     <div ng-repeat="child in prompt.children">
       <a href="?id=prompt&sys_id={{child.sys_id}}" target="_self"><div><b>Fork {{$index + 1}}. {{child.author}}</b> {{child.number}}</div></a>
       <div>
         <textarea class="form-control" rows="5" disabled>{{child.prompt}}</textarea><br>
-      </div>
-    </div>
+  </div>
+  </div>
     <div><b>This prompt</b></div>
     <div>
       <textarea class="form-control" rows="5" disabled>{{prompt.prompt}}</textarea><br>
-    </div>
+  </div>
     <div ng-repeat="parent in prompt.parents">
       <a href="?id=prompt&sys_id={{parent.sys_id}}" target="_self"><div><b>{{$index + 1}}. {{parent.author}}</b> {{parent.number}}</div></a>
       <div>
         <textarea class="form-control" rows="5" disabled>{{parent.prompt}}</textarea><br>
-      </div>
-    </div>
+  </div>
+  </div>
   </div>
   <div class="panel-footer text-right">
       <button class="btn btn-primary" ng-click="c.closeModal()">${Close History}</button>
-    </div>
-</div>
+  </div>
+  </div>
 </script>]]></template>
     </sp_widget>
 </record_update>
