@@ -9,6 +9,23 @@
 		top.window.location = "?id=library";
 	}
 
+	c.goToPrompt = function(sys_id){
+		top.window.location = "?id=prompt&sys_id=" + sys_id;
+	}
+
+	c.goToAuthor = function(author, event){
+		if (event) event.stopPropagation();
+		top.window.location = "?id=library&display=" + c.data.display + "&query=opened_by.name=" + author;
+	}
+
+	c.goHome = function(){
+		top.window.location = "?id=library&display=" + c.data.display;
+	}
+
+	c.goToProfile = function(){
+		top.window.location = "?id=user_profile&sys_id=" + c.data.userId;
+	}
+
 	c.copyToClipboard = function(prompt){
 		try {
 			navigator.clipboard.writeText(prompt);
@@ -90,6 +107,10 @@ For example: [INPUT YOUR NAME HERE]`;*/
   //margin-right: 1rem;
 }
 
+.my-profile{
+  float: right;
+}
+
 .date{
   text-align: right;
 }
@@ -152,14 +173,16 @@ For example: [INPUT YOUR NAME HERE]`;*/
 .engagement{
   //font-size: 1rem;
 }
+
 .engagement-button, .home-button{
   margin-right: 1rem;
   border-radius: 3px;
   padding: 5px;
   background-color: #F5F5F5;
+  white-space: nowrap;
 }
 
-.engagement-button:hover, .history:hover{
+.engagement-button:hover, .history:hover, .prompt-info:hover{
   background-color: #DEDCDA;
 }
 
@@ -223,6 +246,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//configuration
 	data.debug = false;
 	data.userId = gs.getUserID();
+	data.thisUrl = gs.getProperty('glide.servlet.uri');
 	data.promptFields = [
 		'prompt',
 		'category',
@@ -353,20 +377,23 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-22 06:13:36</sys_created_on>
         <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
-        <sys_mod_count>67</sys_mod_count>
+        <sys_mod_count>80</sys_mod_count>
         <sys_name>prompt</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-22 07:49:29</sys_updated_on>
+        <sys_updated_on>2024-06-26 06:12:01</sys_updated_on>
         <template><![CDATA[<div>
   <div class="page-intro">
     <div>
       <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
     </div>
     <div class="h1">
+      <div class="my-profile" ng-click="c.goToProfile()">
+        <span class="author-block-avatar"><sn-avatar class="avatar-medium" primary="data.userId"></sn-avatar></span>
+      </div>
       {{data.number}} by {{data.author}}
     </div>
     <div>
@@ -395,9 +422,9 @@ For example: [INPUT YOUR NAME HERE]`;*/
                 {{prompt.prompt}}
               </div>
               <div class="vote col-xs-3">
-                <div class="prompt-info">
+                <div class="prompt-info" ng-click="c.goToAuthor(prompt['opened_by.name'], $event)">
                   <div class="prompt-info-header">
-                    Author
+                    Author (Click to filter)
                   </div>
                   <div class="prompt-info-detail">
                     {{prompt["opened_by.name"]}}
@@ -433,7 +460,8 @@ For example: [INPUT YOUR NAME HERE]`;*/
               </div>
               <span class="icon-arrow-up engagement-button" ng-class="{'voted': prompt.voted == true}" ng-click="c.vote(prompt.sys_id)"></span>
               <span class="engagement-button"><span class="comment-count">{{data.comments.length}} comment{{prompt.comments.length == 1 ? '' : 's'}}</span></span>
-              <span class="engagement-button"ng-click="c.copyToClipboard(prompt.prompt)">copy <span class="icon-document"></span></span>
+              <span class="engagement-button"ng-click="c.copyToClipboard(prompt.prompt)">Copy Prompt <span class="icon-document"></span></span>
+              <span class="engagement-button"ng-click="c.copyToClipboard(data.thisUrl + 'ai?id=prompt&sys_id=' + prompt.sys_id, $event)">Copy Link <span class="icon-document"></span></span>
               <!--span class="icon-share engagement-button"></span-->
             </div>
           </div>
@@ -493,6 +521,16 @@ For example: [INPUT YOUR NAME HERE]`;*/
       <label for="promptText">Your prompt:</label>
       <textarea class="form-control" id="promptText" rows="3" ng-model="data.newPromptText"></textarea>
   </div>
+  <div>
+    	Need some guidance? The RISEN framework helps structure tasks for generative AI into actionable steps:
+			<ul>
+      	<li>R — Role: Define the AI's role. (e.g., "Act as an agile coach.")
+      	<li>I — Instructions: Provide clear instructions. (e.g., "Write a guide on crafting a good agile development story.")
+      	<li>S — Steps: Outline specific steps. (e.g., "Start with a user persona, describe the user's goal, list the tasks to achieve the goal, and define the acceptance criteria.")
+      	<li>E — End goal: State the goal and audience. (e.g., "Help team members understand how to write clear and effective agile stories.")
+      	<li>N — Narrowing: Add constraints. (e.g., "Max 800 words, avoid technical jargon, use practical examples.")
+      </ul>
+    </div>
   </div>
   <div class="panel-footer text-right">
   	<button class="btn btn-primary" ng-click="c.submitPrompt()" ng-class="{disabled: !data.newPromptText || !data.newPromptCategory || (data.oldPromptText == data.newPromptText)}">${Submit Prompt}</button>
