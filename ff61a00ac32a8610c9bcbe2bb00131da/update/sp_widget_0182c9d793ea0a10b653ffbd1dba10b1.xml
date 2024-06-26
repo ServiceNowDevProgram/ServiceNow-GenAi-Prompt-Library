@@ -295,7 +295,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//see all posts for this form
 
 	//configuration
-	data.debug = true;
+	data.debug = false;
 	data.userId = gs.getUserID();
 	data.isMod = gs.hasRole('x_snc_ehd_servic_0.moderator');
 	data.thisUrl = gs.getProperty('glide.servlet.uri');
@@ -538,14 +538,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>624</sys_mod_count>
+        <sys_mod_count>625</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-26 19:06:05</sys_updated_on>
+        <sys_updated_on>2024-06-26 19:11:49</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
@@ -758,7 +758,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 </div>
 </script>
 
-<script type="text/ng-template" id="deleteComment">
+<!--script type="text/ng-template" id="deleteComment">
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">Mods only: Delete comment?</h4>
@@ -768,7 +768,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
     <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
   </div>
 </div>
-</script>
+</script-->
 
 <script type="text/ng-template" id="commentModal">
 <div class="panel panel-default">
