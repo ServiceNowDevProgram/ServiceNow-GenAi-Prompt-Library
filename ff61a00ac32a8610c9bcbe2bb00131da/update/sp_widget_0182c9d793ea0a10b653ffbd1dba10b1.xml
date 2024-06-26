@@ -42,6 +42,23 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			scope: $scope
 		});
 	}
+	
+	c.modDelete = function(prompt, event){
+		$scope.prompt = prompt;
+		if (event) event.stopPropagation();
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'modDelete',
+			scope: $scope
+		});
+	}
+	
+	c.deletePrompt = function(prompt){
+		c.data.promptToDelete = prompt;
+		c.server.update().then(function(){
+			c.data.promptToDelete = null;
+			c.closeModal();
+		});
+	}
 
 	c.addComment = function(prompt, event){
 		if (event) event.stopPropagation();
@@ -280,6 +297,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//configuration
 	data.debug = false;
 	data.userId = gs.getUserID();
+	data.isMod = gs.hasRole('x_snc_ehd_servic_0.moderator');
 	data.thisUrl = gs.getProperty('glide.servlet.uri');
 	data.query = $sp.getParameter('query') || '';
 	data.categoryFilter = data.query.indexOf('category=') != -1 ? true : false;
@@ -307,6 +325,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		if (newCommentGr.get(input.newComment.sys_id)){
 			newCommentGr.comments = input.newComment.userInput;
 			newCommentGr.update();
+		}
+	}
+	
+	if (input?.promptToDelete){
+		const deleteGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		if (deleteGr.get(input.promptToDelete)){
+			deleteGr.setValue('active', 'false');
+			deleteGr.update();
 		}
 	}
 
@@ -347,6 +373,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//pagination
 	const countGa = new GlideAggregate('x_snc_ehd_servic_0_prompt');
 	if (data.query) countGa.addEncodedQuery(data.query);
+	countGa.addQuery('active', 'true');
 	//countGa.addEncodedQuery(stateFilter);
 	//if (data.query) countGa.addEncodedQuery(data.query);
 	//if (data.searchName) countGa.addEncodedQuery('user.user.nameLIKE' + data.searchName);
@@ -372,6 +399,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	else promptGr.orderByDesc('number');
 	promptGr.chooseWindow(data.rowStart, rowEnd);
 	if (data.query) promptGr.addEncodedQuery(data.query);
+	promptGr.addActiveQuery();
 	promptGr.query();
 	while (promptGr.next()){
 		const prompt = {};
@@ -510,14 +538,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>598</sys_mod_count>
+        <sys_mod_count>609</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-26 18:23:43</sys_updated_on>
+        <sys_updated_on>2024-06-26 18:48:01</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
@@ -595,6 +623,9 @@ For example: [INPUT YOUR NAME HERE]`;*/
           <div class="engagement">
             <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true, $event)">
               Fork
+            </div>
+            <div class="icon-cross-circle fork" ng-click="c.modDelete(prompt.sys_id, $event)" ng-if="data.isMod === true">
+              Delete (Mod)
             </div>
             <span class="icon-arrow-up engagement-button" ng-class="{'voted': prompt.voted == true}" ng-click="c.vote(prompt.sys_id, $event)"></span>
             <span class="engagement-button" ng-click="c.addComment(prompt, $event)"><span class="comment-count">{{prompt.comments.length}} comment{{prompt.comments.length == 1 ? '' : 's'}} </span><span class="icon-comment-add"></span></span>
@@ -710,6 +741,18 @@ For example: [INPUT YOUR NAME HERE]`;*/
   </div>
   <div class="panel-footer text-right">
     <button class="btn btn-primary" ng-click="c.submitPrompt()" ng-class="{disabled: !data.newPromptText || !data.newPromptCategory || (data.oldPromptText == data.newPromptText)}">${Submit Prompt}</button>
+    <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
+  </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="modDelete">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Mods only: Delete prompt?</h4>
+  </div>
+  <div class="panel-footer text-right">
+    <button class="btn btn-primary" ng-click="c.deletePrompt(prompt)">${Delete}</button>
     <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
   </div>
 </div>
