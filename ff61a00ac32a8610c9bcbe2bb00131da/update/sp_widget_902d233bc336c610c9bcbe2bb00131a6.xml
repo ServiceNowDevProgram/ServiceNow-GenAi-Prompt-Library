@@ -70,6 +70,24 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		});
 	}
 
+	c.modDelete = function(prompt, event){
+		$scope.prompt = prompt;
+		if (event) event.stopPropagation();
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'modDelete',
+			scope: $scope
+		});
+	}
+
+	c.deletePrompt = function(prompt){
+		c.data.promptToDelete = prompt;
+		c.server.update().then(function(){
+			c.data.promptToDelete = null;
+			c.closeModal();
+			c.goHome();
+		});
+	}
+
 	c.submitPrompt = function(){
 		c.server.update().then(function(){
 			c.data.newPromptText = '';
@@ -251,6 +269,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//configuration
 	data.debug = false;
 	data.userId = gs.getUserID();
+	data.isMod = gs.hasRole('x_snc_ehd_servic_0.moderator');
 	data.thisUrl = gs.getProperty('glide.servlet.uri');
 	data.promptFields = [
 		'prompt',
@@ -274,6 +293,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			newCommentGr.update();
 		}
 		data.newComment = {};
+	}
+	
+	if (input?.promptToDelete){
+		const deleteGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		if (deleteGr.get(input.promptToDelete)){
+			deleteGr.setValue('active', 'false');
+			deleteGr.update();
+		}
 	}
 
 	if (input?.voteClicked){
@@ -313,6 +340,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	data.prompts = [];
 	const promptGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
 	promptGr.addQuery('sys_id', data.sys_id);
+	promptGr.addActiveQuery();
 	promptGr.query();
 	while (promptGr.next()){
 		const prompt = {};
@@ -382,14 +410,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-22 06:13:36</sys_created_on>
         <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
-        <sys_mod_count>82</sys_mod_count>
+        <sys_mod_count>85</sys_mod_count>
         <sys_name>prompt</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-26 18:26:07</sys_updated_on>
+        <sys_updated_on>2024-06-26 19:09:52</sys_updated_on>
         <template><![CDATA[<div>
   <div class="page-intro">
     <div>
@@ -462,6 +490,9 @@ For example: [INPUT YOUR NAME HERE]`;*/
             <div class="engagement">
               <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true)">
                 Fork
+              </div>
+              <div class="icon-cross-circle fork" ng-click="c.modDelete(prompt.sys_id, $event)" ng-if="data.isMod === true">
+                Delete (Mod)
               </div>
               <span class="icon-arrow-up engagement-button" ng-class="{'voted': prompt.voted == true}" ng-click="c.vote(prompt.sys_id)"></span>
               <span class="engagement-button"><span class="comment-count">{{data.comments.length}} comment{{prompt.comments.length == 1 ? '' : 's'}}</span></span>
@@ -571,6 +602,18 @@ For example: [INPUT YOUR NAME HERE]`;*/
       <button class="btn btn-primary" ng-click="c.closeModal()">${Close History}</button>
   </div>
   </div>
+</script>
+
+<script type="text/ng-template" id="modDelete">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Mods only: Delete prompt?</h4>
+  </div>
+  <div class="panel-footer text-right">
+    <button class="btn btn-primary" ng-click="c.deletePrompt(prompt)">${Delete}</button>
+    <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
+  </div>
+</div>
 </script>]]></template>
     </sp_widget>
 </record_update>
