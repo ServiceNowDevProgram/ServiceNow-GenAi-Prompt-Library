@@ -415,15 +415,15 @@ For example: [INPUT YOUR NAME HERE]`;*/
 
 		//check for vote
 		const voteGr = new GlideRecord('x_snc_ehd_servic_0_vote');
-		//voteGr.addQuery('user', data.userId);
 		voteGr.addQuery('prompt', prompt.sys_id)
+		voteGr.query();
+		prompt.score = voteGr.getRowCount();
+		voteGr.addQuery('user', data.userId);
 		voteGr.query();
 		if (voteGr.next()){
 			prompt.voted = true;
-			prompt.score = voteGr.getRowCount();
 		} else {
 			prompt.voted = false;
-			prompt.score = 0;
 		}
 
 		//get comments
@@ -510,14 +510,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>596</sys_mod_count>
+        <sys_mod_count>598</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-26 07:03:14</sys_updated_on>
+        <sys_updated_on>2024-06-26 18:23:43</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
