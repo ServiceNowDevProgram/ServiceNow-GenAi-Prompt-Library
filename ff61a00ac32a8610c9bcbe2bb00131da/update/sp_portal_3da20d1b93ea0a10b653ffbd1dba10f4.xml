@@ -30,7 +30,7 @@ $text-muted:#646567;</css_variables>
         <icon/>
         <kb_knowledge_base/>
         <kb_knowledge_page/>
-        <login_page/>
+        <login_page display_value="login">6995a144cb11120000f8d856634c9c25</login_page>
         <logo/>
         <notfound_page display_value="404">3c2c9063cb11020000f8d856634c9c1f</notfound_page>
         <quick_start_config/>
@@ -46,14 +46,14 @@ $text-muted:#646567;</css_variables>
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:17:15</sys_created_on>
         <sys_id>3da20d1b93ea0a10b653ffbd1dba10f4</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>ServiceNow Generative AI Prompt Library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_portal_3da20d1b93ea0a10b653ffbd1dba10f4</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-14 18:28:04</sys_updated_on>
+        <sys_updated_on>2024-06-26 07:12:59</sys_updated_on>
         <theme display_value="Ai Prompt Library Theme">45e48921c3f60610c9bcbe2bb00131e1</theme>
         <title>ServiceNow Generative AI Prompt Library</title>
         <ts_index_group/>

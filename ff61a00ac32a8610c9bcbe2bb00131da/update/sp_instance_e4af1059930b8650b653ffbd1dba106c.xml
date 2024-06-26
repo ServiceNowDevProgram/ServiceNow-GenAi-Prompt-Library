@@ -6,27 +6,27 @@
         <css/>
         <glyph/>
         <id/>
-        <order>2</order>
+        <order>1</order>
         <roles/>
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">182da33bc336c610c9bcbe2bb0013158</sp_column>
-        <sp_widget display_value="prompt">902d233bc336c610c9bcbe2bb00131a6</sp_widget>
+        <sp_widget display_value="Login">6506d341cb33020000f8d856634c9cdc</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>earl.duque</sys_created_by>
-        <sys_created_on>2024-06-22 06:13:37</sys_created_on>
-        <sys_id>242da33bc336c610c9bcbe2bb001315b</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_created_on>2024-06-26 07:06:40</sys_created_on>
+        <sys_id>e4af1059930b8650b653ffbd1dba106c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
-        <sys_update_name>sp_instance_242da33bc336c610c9bcbe2bb001315b</sys_update_name>
+        <sys_update_name>sp_instance_e4af1059930b8650b653ffbd1dba106c</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
         <sys_updated_on>2024-06-26 07:06:40</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=242da33bc336c610c9bcbe2bb001315b"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=e4af1059930b8650b653ffbd1dba106c"/>
 </record_update>
