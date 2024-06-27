@@ -42,6 +42,24 @@
 		});
 	}
 
+	c.hideComments = function(prompt, event){
+		if (event) event.stopPropagation();
+		$scope.prompt = prompt;
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'hideComments',
+			scope: $scope,
+		})
+	}
+
+	c.hideCommentsConfirmed = function(prompt){
+		c.data.hideAllComments = prompt;
+		c.server.update().then(function(){
+			c.closeModal();
+			$uibModalStack.dismissAll();
+			c.data.hideAllComments = null;
+		});
+	}
+
 	c.submitComment = function (sys_id, userInput){
 		c.data.newComment = {
 			sys_id: sys_id,
@@ -284,6 +302,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		'parent.number',
 		'number',
 		'sys_id',
+		'hide_comments',
 	];
 
 	if (input?.newComment){
@@ -294,12 +313,20 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		}
 		data.newComment = {};
 	}
-	
+
 	if (input?.promptToDelete){
 		const deleteGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
 		if (deleteGr.get(input.promptToDelete)){
 			deleteGr.setValue('active', 'false');
 			deleteGr.update();
+		}
+	}
+
+	if (input?.hideAllComments){
+		const hideCommentsGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		if (hideCommentsGr.get(input.hideAllComments)){
+			hideCommentsGr.setValue('hide_comments', 'true');
+			hideCommentsGr.update();
 		}
 	}
 
@@ -350,6 +377,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 
 		data.number = prompt.number;
 		data.author = prompt['opened_by.name'];
+		data.hide_comments = prompt.hide_comments === 'true';
 
 		//get parents
 		prompt.parents = [];
@@ -410,14 +438,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-22 06:13:36</sys_created_on>
         <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
-        <sys_mod_count>85</sys_mod_count>
+        <sys_mod_count>93</sys_mod_count>
         <sys_name>prompt</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-26 19:09:52</sys_updated_on>
+        <sys_updated_on>2024-06-27 16:58:46</sys_updated_on>
         <template><![CDATA[<div>
   <div class="page-intro">
     <div>
@@ -511,19 +539,27 @@ For example: [INPUT YOUR NAME HERE]`;*/
     </div>
     <div class="col-xs-12">
       <div class="section-block block-main">
-        <div class="form-group">
-          <label for="multiLineTextBox">Add a comment:</label>
-          <textarea id="multiLineTextBox" class="form-control" rows="5" ng-model="data.userInput"></textarea>
+        <div ng-if="data.hide_comments">
+          Comments have been hidden by moderators.
         </div>
-        <div class="prompt-button">
-          <button class="btn btn-primary" ng-click="c.submitComment(data.sys_id, data.userInput)" ng-class="{disabled: !data.userInput}">Submit</button>
-        </div>
-        <div ng-repeat="comment in data.comments">
-          <div>
-            {{comment[0]}}<br>
-            {{comment[1]}}
+        <div ng-if="!data.hide_comments">
+          <span class="icon-cross-circle" ng-click="c.hideComments(data.sys_id)" ng-if="data.isMod === true && data.hide_comments == false" style="float: right">
+            Hide comments (Mod)
+          </span>
+          <div class="form-group">
+            <label for="multiLineTextBox">Add a comment:</label>
+            <textarea id="multiLineTextBox" class="form-control" rows="5" ng-model="data.userInput"></textarea>
           </div>
-          <hr class="dashed" ng-if="$index != data.comments.length-1">
+          <div class="prompt-button">
+            <button class="btn btn-primary" ng-click="c.submitComment(data.sys_id, data.userInput)" ng-class="{disabled: !data.userInput}">Submit</button>
+          </div>
+          <div ng-repeat="comment in data.comments">
+            <div>
+              {{comment[0]}}<br>
+              {{comment[1]}}
+            </div>
+            <hr class="dashed" ng-if="$index != data.comments.length-1">
+          </div>
         </div>
       </div>
     </div>
@@ -565,8 +601,8 @@ For example: [INPUT YOUR NAME HERE]`;*/
       	<li>S — Steps: Outline specific steps. (e.g., "Start with a user persona, describe the user's goal, list the tasks to achieve the goal, and define the acceptance criteria.")
       	<li>E — End goal: State the goal and audience. (e.g., "Help team members understand how to write clear and effective agile stories.")
       	<li>N — Narrowing: Add constraints. (e.g., "Max 800 words, avoid technical jargon, use practical examples.")
-      </ul>
-    </div>
+  </ul>
+  </div>
   </div>
   <div class="panel-footer text-right">
   	<button class="btn btn-primary" ng-click="c.submitPrompt()" ng-class="{disabled: !data.newPromptText || !data.newPromptCategory || (data.oldPromptText == data.newPromptText)}">${Submit Prompt}</button>
@@ -613,7 +649,19 @@ For example: [INPUT YOUR NAME HERE]`;*/
     <button class="btn btn-primary" ng-click="c.deletePrompt(prompt)">${Delete}</button>
     <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
   </div>
-</div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="hideComments">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Mods only: Hide comments?</h4>
+  </div>
+  <div class="panel-footer text-right">
+    <button class="btn btn-primary" ng-click="c.hideCommentsConfirmed(prompt)">${Hide all}</button>
+    <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
+  </div>
+  </div>
 </script>]]></template>
     </sp_widget>
 </record_update>

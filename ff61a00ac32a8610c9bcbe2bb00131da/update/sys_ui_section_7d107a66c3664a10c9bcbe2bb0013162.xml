@@ -4,13 +4,13 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>908d7e919347c650b653ffbd1dba1028</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>120b2be5930f0a50b653ffbd1dba106a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>opened_by</element>
             <position>1</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba1028</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba106a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>parent</element>
             <position>2</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba1029</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba106b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>.split</element>
             <position>3</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba1029</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba106b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -60,167 +60,181 @@
             <element>active</element>
             <position>4</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba102a</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba106c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>hide_comments</element>
+            <position>5</position>
+            <sys_created_by>earl.duque</sys_created_by>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba106c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
+            <sys_updated_by>earl.duque</sys_updated_by>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>score</element>
-            <position>5</position>
+            <position>6</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba102a</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba106d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>category_highlight</element>
-            <position>6</position>
+            <position>7</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba102b</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba106d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>category</element>
-            <position>7</position>
+            <position>8</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba102b</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba106e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>8</position>
+            <position>9</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba102c</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba106e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>prompt</element>
-            <position>9</position>
+            <position>10</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba102c</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba106f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>short_description</element>
-            <position>10</position>
+            <position>11</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba102d</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba106f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>description</element>
-            <position>11</position>
+            <position>12</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba102d</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba1070</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>comments_and_work_notes</element>
-            <position>12</position>
+            <position>13</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba102e</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba1070</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>comments</element>
-            <position>13</position>
+            <position>14</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba102e</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba1071</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>work_notes</element>
-            <position>14</position>
+            <position>15</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>d48d7e919347c650b653ffbd1dba102f</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>1e0b2be5930f0a50b653ffbd1dba1071</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>activity.xml</element>
-            <position>15</position>
+            <position>16</position>
             <sys_created_by>earl.duque</sys_created_by>
-            <sys_created_on>2024-06-26 18:36:25</sys_created_on>
-            <sys_id>dc8d7e919347c650b653ffbd1dba102f</sys_id>
+            <sys_created_on>2024-06-27 16:33:49</sys_created_on>
+            <sys_id>160b2be5930f0a50b653ffbd1dba1072</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter display_value="Activities (filtered)">444ea5c6bf310100e628555b3f0739d6</sys_ui_formatter>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_ehd_servic_0_prompt" sys_domain="global" view="Default view">7d107a66c3664a10c9bcbe2bb0013162</sys_ui_section>
             <sys_updated_by>earl.duque</sys_updated_by>
-            <sys_updated_on>2024-06-26 18:36:25</sys_updated_on>
+            <sys_updated_on>2024-06-27 16:33:49</sys_updated_on>
             <sys_user/>
             <type>formatter</type>
         </sys_ui_element>

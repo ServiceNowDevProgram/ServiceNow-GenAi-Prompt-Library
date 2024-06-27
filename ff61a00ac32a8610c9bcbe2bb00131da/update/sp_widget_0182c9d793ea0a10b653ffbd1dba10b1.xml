@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function($uibModal, $scope, spUtil) {
+        <client_script><![CDATA[api.controller=function($uibModal, $scope, spUtil, $uibModalStack) {
 	var c = this;
 
 	c.goToPrompt = function(sys_id){
@@ -59,12 +59,30 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			c.closeModal();
 		});
 	}
+	
+	c.hideComments = function(prompt, event){
+		if (event) event.stopPropagation();
+		$scope.prompt = prompt;
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'hideComments',
+			scope: $scope,
+		})
+	}
+	
+	c.hideCommentsConfirmed = function(prompt){
+		c.data.hideAllComments = prompt;
+		c.server.update().then(function(){
+			$uibModalStack.dismissAll();
+			c.data.hideAllComments = null;
+		});
+	}
 
 	c.addComment = function(prompt, event){
 		if (event) event.stopPropagation();
 		$scope.comments = prompt.comments;
 		$scope.prompt = prompt.prompt;
 		$scope.sys_id = prompt.sys_id;
+		$scope.hideCommentsPrompt = prompt.hide_comments === 'true';
 		c.modalInstance = $uibModal.open({
 			templateUrl: 'commentModal',
 			scope: $scope,
@@ -295,7 +313,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//see all posts for this form
 
 	//configuration
-	data.debug = false;
+	data.debug = true;
 	data.userId = gs.getUserID();
 	data.isMod = gs.hasRole('x_snc_ehd_servic_0.moderator');
 	data.thisUrl = gs.getProperty('glide.servlet.uri');
@@ -315,6 +333,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		'parent.number',
 		'number',
 		'sys_id',
+		'hide_comments',
 	];
 
 	//inputs
@@ -333,6 +352,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		if (deleteGr.get(input.promptToDelete)){
 			deleteGr.setValue('active', 'false');
 			deleteGr.update();
+		}
+	}
+	
+	if (input?.hideAllComments){
+		const hideCommentsGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+		if (hideCommentsGr.get(input.hideAllComments)){
+			hideCommentsGr.setValue('hide_comments', 'true');
+			hideCommentsGr.update();
 		}
 	}
 
@@ -538,14 +565,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>625</sys_mod_count>
+        <sys_mod_count>650</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-26 19:11:49</sys_updated_on>
+        <sys_updated_on>2024-06-27 16:59:01</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
@@ -758,17 +785,17 @@ For example: [INPUT YOUR NAME HERE]`;*/
 </div>
 </script>
 
-<!--script type="text/ng-template" id="deleteComment">
+<script type="text/ng-template" id="hideComments">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4 class="panel-title">Mods only: Delete comment?</h4>
+    <h4 class="panel-title">Mods only: Hide comments?</h4>
   </div>
   <div class="panel-footer text-right">
-    <button class="btn btn-primary" ng-click="c.deleteComment(comment)">${Delete}</button>
+    <button class="btn btn-primary" ng-click="c.hideCommentsConfirmed(prompt)">${Hide all}</button>
     <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
   </div>
 </div>
-</script-->
+</script>
 
 <script type="text/ng-template" id="commentModal">
 <div class="panel panel-default">
@@ -778,23 +805,29 @@ For example: [INPUT YOUR NAME HERE]`;*/
   <div class="panel-body wrapper-xl">
     <div>
       {{prompt}}<br>
-      <hr class="solid">
+    <span class="icon-cross-circle" ng-click="c.hideComments(sys_id, $event)" ng-if="data.isMod === true && hideCommentsPrompt == false" style="float: right">
+			Hide comments (Mod)
+  	</span>
+    <hr class="solid">
     </div>
-    <div ng-repeat="comment in comments">
+    <div ng-if="hideCommentsPrompt">
+    	Comments have been hidden by moderators<br>
+    </div>
+    <div ng-if="comments.length == 0">
+    	Be the first to comment!<br><br>
+    </div>
+    <div ng-repeat="comment in comments" ng-if="!hideCommentsPrompt">
       <div>
-      	<!--span class="icon-cross-circle" ng-click="c.deleteCommentModal('', $event)" ng-if="data.isMod === true" style="float: right">
-          Delete (Mod)
-        </span-->
         {{comment[0]}}<br>
         {{comment[1]}}
       </div>
       <hr class="dashed">
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-if="!hideCommentsPrompt">
       <label for="multiLineTextBox">Add a comment:</label>
       <textarea id="multiLineTextBox" class="form-control" rows="5" ng-model="userInput"></textarea>
     </div>
-    <button class="btn btn-primary" ng-click="c.submitComment(sys_id, userInput)" ng-class="{disabled: !userInput}">Submit</button>
+    <button class="btn btn-primary" ng-click="c.submitComment(sys_id, userInput)" ng-if="!hideCommentsPrompt" ng-class="{disabled: !userInput}">Submit</button>
   </div>
   <div class="panel-footer text-right">
     <button class="btn btn-primary" ng-click="c.closeModal()">${Close Comments}</button>

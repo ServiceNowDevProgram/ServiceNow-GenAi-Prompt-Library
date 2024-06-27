@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element audit="true" db_object_id="1d107a66c3664a10c9bcbe2bb00131a0" extends="task" label="Prompt" max_length="40" name="x_snc_ehd_servic_0_prompt" type="collection">
+        <element label="Hide comments" max_length="255" name="hide_comments" type="boolean"/>
         <element label="Category" max_length="32" name="category" reference="x_snc_ehd_servic_0_category" type="reference"/>
         <element default="0" label="Score" max_length="255" name="score" type="integer"/>
         <element label="Prompt" max_length="2048" name="prompt" type="string"/>
