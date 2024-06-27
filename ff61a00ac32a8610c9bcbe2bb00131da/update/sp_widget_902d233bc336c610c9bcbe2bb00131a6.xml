@@ -106,11 +106,13 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		});
 	}
 
-	c.submitPrompt = function(){
+	c.submitPrompt = function(submitPromptTrue){
+		if (submitPromptTrue === true) c.data.submitPromptConfirmed = true;
 		c.server.update().then(function(){
 			c.data.newPromptText = '';
 			c.data.newPromptCategory = '';
 			c.data.newPromptParent = '';
+			c.data.submitPromptConfirmed = false;
 			c.closeModal();
 			top.window.location = "?id=prompt&sys_id=" + c.data.newSysId;
 			spUtil.addInfoMessage('Your prompt has been submitted!');
@@ -345,7 +347,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		}
 	}
 
-	if (input?.newPromptText && input?.newPromptCategory){
+	if (input?.newPromptText && input?.newPromptCategory && input?.submitPromptConfirmed === true){
 		const newPromptGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
 		newPromptGr.newRecord();
 		newPromptGr.setValue('prompt', input.newPromptText);
@@ -438,14 +440,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-22 06:13:36</sys_created_on>
         <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
-        <sys_mod_count>95</sys_mod_count>
+        <sys_mod_count>100</sys_mod_count>
         <sys_name>prompt</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-27 19:41:36</sys_updated_on>
+        <sys_updated_on>2024-06-27 21:38:52</sys_updated_on>
         <template><![CDATA[<div>
   <div class="page-intro">
     <div>
@@ -605,7 +607,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
   </div>
   </div>
   <div class="panel-footer text-right">
-  	<button class="btn btn-primary" ng-click="c.submitPrompt()" ng-class="{disabled: !data.newPromptText || !data.newPromptCategory || (data.oldPromptText == data.newPromptText)}">${Submit Prompt}</button>
+  	<button class="btn btn-primary" ng-click="c.submitPrompt(true)" ng-class="{disabled: !data.newPromptText || !data.newPromptCategory || (data.oldPromptText == data.newPromptText)}">${Submit Prompt}</button>
     <button class="btn btn-info" ng-click="c.closeModal()">${Close}</button>
   </div>
   </div>
