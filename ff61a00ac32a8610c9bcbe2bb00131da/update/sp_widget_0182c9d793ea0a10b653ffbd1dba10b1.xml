@@ -42,7 +42,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			scope: $scope
 		});
 	}
-	
+
 	c.modDelete = function(prompt, event){
 		$scope.prompt = prompt;
 		if (event) event.stopPropagation();
@@ -51,7 +51,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			scope: $scope
 		});
 	}
-	
+
 	c.deletePrompt = function(prompt){
 		c.data.promptToDelete = prompt;
 		c.server.update().then(function(){
@@ -59,7 +59,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			c.closeModal();
 		});
 	}
-	
+
 	c.hideComments = function(prompt, event){
 		if (event) event.stopPropagation();
 		$scope.prompt = prompt;
@@ -68,7 +68,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			scope: $scope,
 		})
 	}
-	
+
 	c.hideCommentsConfirmed = function(prompt){
 		c.data.hideAllComments = prompt;
 		c.server.update().then(function(){
@@ -147,6 +147,15 @@ For example: [INPUT YOUR NAME HERE]`;*/
 			c.data.submitPromptConfirmed = false;
 			c.closeModal();
 			spUtil.addInfoMessage('Your prompt has been submitted!');
+
+			if (c.data.debug) console.log(c.data);
+			if (c.data.newPromptSysId){
+				spUtil.recordWatch($scope, "x_snc_ehd_servic_0_prompt", "sys_id=" + c.data.newPromptSysId, function(xname, xdata) {
+					console.log(xname); //Returns information about the event that has occurred
+					//console.log(xdata); //Returns the data inserted or updated on the table
+					c.data.prompts[c.data.prompts.findIndex(p => p.sys_id === c.data.newPromptSysId)].short_description = xname.data.record.short_description.value;
+				});
+			}
 		});
 	}
 };]]></client_script>
@@ -296,6 +305,10 @@ For example: [INPUT YOUR NAME HERE]`;*/
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.ai-sd{
+  padding-bottom: 0.5rem;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -316,7 +329,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 	//see all posts for this form
 
 	//configuration
-	data.debug = false;
+	data.debug = true;
 	data.userId = gs.getUserID();
 	data.isMod = gs.hasRole('x_snc_ehd_servic_0.moderator');
 	data.thisUrl = gs.getProperty('glide.servlet.uri');
@@ -337,6 +350,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		'number',
 		'sys_id',
 		'hide_comments',
+		'short_description',
 	];
 
 	//inputs
@@ -387,15 +401,16 @@ For example: [INPUT YOUR NAME HERE]`;*/
 		newPromptGr.setValue('prompt', input.newPromptText);
 		newPromptGr.setValue('opened_by', data.userId);
 		newPromptGr.setValue('category', input.newPromptCategory);
+		newPromptGr.setValue('short_description', 'Generating short description...');
 		if (input?.newPromptParent){
 			newPromptGr.setValue('parent', input.newPromptParent);
 		}
-		const newPromptSysId = newPromptGr.insert();
+		data.newPromptSysId = newPromptGr.insert();
 
 		//automatically add a new vote for self
 		const newPromptVoteGr = new GlideRecord('x_snc_ehd_servic_0_vote');
 		newPromptVoteGr.newRecord();
-		newPromptVoteGr.setValue('prompt', newPromptSysId);
+		newPromptVoteGr.setValue('prompt', data.newPromptSysId);
 		newPromptVoteGr.setValue('user', data.userId);
 		newPromptVoteGr.insert();
 	}
@@ -568,14 +583,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>666</sys_mod_count>
+        <sys_mod_count>688</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-27 21:41:32</sys_updated_on>
+        <sys_updated_on>2024-06-28 07:08:09</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
@@ -623,7 +638,12 @@ For example: [INPUT YOUR NAME HERE]`;*/
           </div>
           <div class="row" ng-click="c.goToPrompt(prompt.sys_id)">
             <div class="prompt col-xs-9 limited-text">
-              <span class="pre-line">{{prompt.prompt}}</span>
+              <div class="ai-sd">
+                <b>{{prompt.short_description}}</b>
+              </div>
+              <div>
+                <span class="pre-line">{{prompt.prompt}}</span>
+              </div>
             </div>
             <div class="vote col-xs-3">
               <div class="prompt-info" ng-click="c.goToAuthor(prompt['opened_by.name'], $event)">
