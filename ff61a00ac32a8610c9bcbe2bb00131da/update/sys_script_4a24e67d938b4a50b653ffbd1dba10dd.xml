@@ -31,6 +31,7 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
 
+	/* doesn't work for roled users :(
 	var openAIalias = 'c7ae12b5938b4a50b653ffbd1dba10ca';
 
     var apiGr = new GlideRecord('api_key_credentials');
@@ -43,6 +44,9 @@
     var provider = new sn_cc.StandardCredentialsProvider();
     var credential = provider.getCredentialByID(credentialSysId);
     var key = credential.getAttribute("api_key");
+	*/
+
+	const key = gs.getProperty('openai.api.key');
 
     var prompt = `Provide a very short description of what the provided prompt does.
 
@@ -89,7 +93,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4a24e67d938b4a50b653ffbd1dba10dd</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>Create short description via genai</sys_name>
         <sys_overrides/>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
@@ -97,7 +101,7 @@
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sys_script_4a24e67d938b4a50b653ffbd1dba10dd</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-28 06:28:18</sys_updated_on>
+        <sys_updated_on>2024-06-28 18:18:22</sys_updated_on>
         <template/>
         <when>async_always</when>
     </sys_script>
