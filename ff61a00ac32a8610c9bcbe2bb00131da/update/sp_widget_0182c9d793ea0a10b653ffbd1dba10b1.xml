@@ -21,7 +21,8 @@
 		top.window.location = "?id=library&display=" + c.data.display;
 	}
 	
-	c.goToLogin = function(){
+	c.goToLogin = function(event){
+		if (event) event.stopPropagation();
 		top.window.location = "?id=login";
 	}
 
@@ -624,14 +625,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>780</sys_mod_count>
+        <sys_mod_count>782</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-28 18:45:42</sys_updated_on>
+        <sys_updated_on>2024-07-02 04:41:43</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
@@ -726,7 +727,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
             <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true, $event)" ng-if="data.loggedIn === true">
               Fork
             </div>
-            <div class="icon-tree-right fork ng-click-element" ng-click="c.goToHome()" ng-if="data.loggedIn === false">
+            <div class="icon-tree-right fork ng-click-element" ng-click="c.goToLogin($event)" ng-if="data.loggedIn === false">
               Fork<span class="hover-text">Login to fork</span>
             </div>
             <div class="icon-cross-circle fork" ng-click="c.modDelete(prompt.sys_id, $event)" ng-if="data.isMod === true">

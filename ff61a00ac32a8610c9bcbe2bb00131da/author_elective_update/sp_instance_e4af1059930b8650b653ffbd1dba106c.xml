@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">182da33bc336c610c9bcbe2bb0013158</sp_column>
+        <sp_widget display_value="Login">6506d341cb33020000f8d856634c9cdc</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-26 07:06:40</sys_created_on>
+        <sys_id>e4af1059930b8650b653ffbd1dba106c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sp_instance_e4af1059930b8650b653ffbd1dba106c</sys_update_name>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-26 07:06:40</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=e4af1059930b8650b653ffbd1dba106c"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</application>
+        <file_path/>
+        <instance_id>13d96523db2ee594387021c40596192b</instance_id>
+        <instance_name>earlio</instance_name>
+        <name>sp_instance_e4af1059930b8650b653ffbd1dba106c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><glyph/><id/><order>1</order><roles/><short_description/><size>md</size><sp_column display_value="1">182da33bc336c610c9bcbe2bb0013158</sp_column><sp_widget display_value="Login">6506d341cb33020000f8d856634c9cdc</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>earl.duque</sys_created_by><sys_created_on>2024-06-26 07:06:40</sys_created_on><sys_id>e4af1059930b8650b653ffbd1dba106c</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package><sys_policy/><sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope><sys_update_name>sp_instance_e4af1059930b8650b653ffbd1dba106c</sys_update_name><sys_updated_by>earl.duque</sys_updated_by><sys_updated_on>2024-06-26 07:06:40</sys_updated_on><title/><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=e4af1059930b8650b653ffbd1dba106c"/></record_update>]]></payload>
+        <payload_hash>156257532</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>08c10beac3a64a10c9bcbe2bb001318a</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-06-26 07:06:40</sys_created_on>
+        <sys_id>2caf1059930b8650b653ffbd1dba106e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>190535e320f0000001</sys_recorded_at>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-06-26 07:06:40</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>20af1059ad0b86509cc7637c69f4e96e</update_guid>
+        <update_guid_history>20af1059ad0b86509cc7637c69f4e96e:156257532</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">c91576c793cfce50b653ffbd1dba109f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>earl.duque</sys_created_by>
+        <sys_created_on>2024-07-02 04:28:58</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>07810b32d97944888191796f8f552e84</sys_id>
+        <sys_metadata>e4af1059930b8650b653ffbd1dba106c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_scope_delete display_value="">099a44a5eb8348768110db4d587b2a71</sys_scope_delete>
+        <sys_update_name>sp_instance_e4af1059930b8650b653ffbd1dba106c</sys_update_name>
+        <sys_update_version display_value="sp_instance_e4af1059930b8650b653ffbd1dba106c">2caf1059930b8650b653ffbd1dba106e</sys_update_version>
+        <sys_updated_by>earl.duque</sys_updated_by>
+        <sys_updated_on>2024-07-02 04:28:58</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

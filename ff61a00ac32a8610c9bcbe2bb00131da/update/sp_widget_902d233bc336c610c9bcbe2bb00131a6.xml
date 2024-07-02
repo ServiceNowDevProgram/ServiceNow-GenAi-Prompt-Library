@@ -26,6 +26,10 @@
 		top.window.location = "?id=user_profile&sys_id=" + c.data.userId;
 	}
 
+	c.goToLogin = function(){
+		top.window.location = "?id=login";
+	}
+
 	c.copyToClipboard = function(prompt){
 		try {
 			navigator.clipboard.writeText(prompt);
@@ -273,6 +277,49 @@ For example: [INPUT YOUR NAME HERE]`;*/
 
 .ai-sd{
   padding-bottom: 0.5rem;
+}
+
+div &gt; button {
+  margin-bottom: 1rem;
+}
+
+.ng-click-element {
+  position: relative;
+  //display: inline-block;
+  cursor: pointer;
+}
+
+.hover-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%; /* Position above the element */
+  left: 50%;
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ng-click-element:hover .hover-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.layered-box {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+              0 2px 2px rgba(0,0,0,0.12), 
+              0 4px 4px rgba(0,0,0,0.12), 
+              0 8px 8px rgba(0,0,0,0.12);
+}
+
+.comment {
+  margin-bottom: 1rem;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -285,13 +332,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
         <name>prompt</name>
         <option_schema/>
-        <public>false</public>
+        <public>true</public>
         <roles/>
         <script><![CDATA[(function() {
 	data.sys_id = $sp.getParameter('sys_id');
 
 	//configuration
 	data.debug = false;
+	data.loggedIn = gs.getSession().isLoggedIn();
 	data.userId = gs.getUserID();
 	data.isMod = gs.hasRole('x_snc_ehd_servic_0.moderator');
 	data.thisUrl = gs.getProperty('glide.servlet.uri');
@@ -444,23 +492,26 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-22 06:13:36</sys_created_on>
         <sys_id>902d233bc336c610c9bcbe2bb00131a6</sys_id>
-        <sys_mod_count>101</sys_mod_count>
+        <sys_mod_count>119</sys_mod_count>
         <sys_name>prompt</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_902d233bc336c610c9bcbe2bb00131a6</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-06-28 07:06:16</sys_updated_on>
+        <sys_updated_on>2024-07-02 04:48:47</sys_updated_on>
         <template><![CDATA[<div>
   <div class="page-intro">
     <div>
       <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
     </div>
     <div class="h1">
-      <div class="my-profile" ng-click="c.goToProfile()">
+      <div class="my-profile" ng-click="c.goToProfile()" ng-if="data.loggedIn === true">
         <span class="author-block-avatar"><sn-avatar class="avatar-medium" primary="data.userId"></sn-avatar></span>
       </div>
+      <a href="?id=login" target="_self"ng-click="c.goToHome()" ng-if="data.loggedIn === false" class="h4 my-profile">
+        Login
+      </a>
       {{data.number}} by {{data.author}}
     </div>
     <div>
@@ -471,7 +522,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
     <div class="col-xs-12">
       <div class="section-block">
         <div ng-repeat="prompt in data.prompts" class="prompt-block">
-          <div class="block-main">
+          <div class="block-main layered-box">
             <div class="author-block">
               <span class="author-block-avatar"><sn-avatar class="avatar-medium" primary="prompt.opened_by"></sn-avatar></span>
               <div class="author-block-score">
@@ -525,13 +576,21 @@ For example: [INPUT YOUR NAME HERE]`;*/
               <span ng-if="prompt.children.length > 0"> {{prompt.children.length}} fork{{prompt.children.length == 1 ? '' : 's'}} from this.</span>
             </div>
             <div class="engagement">
-              <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true)">
+              <div class="icon-tree-right fork" ng-click="c.addPrompt(prompt, true, $event)" ng-if="data.loggedIn === true">
                 Fork
+              </div>
+              <div class="icon-tree-right fork ng-click-element" ng-click="c.goToLogin()" ng-if="data.loggedIn === false">
+                Fork<span class="hover-text">Login to fork</span>
               </div>
               <div class="icon-cross-circle fork" ng-click="c.modDelete(prompt.sys_id, $event)" ng-if="data.isMod === true">
                 Delete (Mod)
               </div>
-              <span class="icon-arrow-up engagement-button" ng-class="{'voted': prompt.voted == true}" ng-click="c.vote(prompt.sys_id)"></span>
+              <span ng-if="data.loggedIn === true">
+                <span class="icon-arrow-up engagement-button" ng-class="{'voted': prompt.voted == true}" ng-click="c.vote(prompt.sys_id, $event)"></span>
+              </span>
+              <span ng-if="data.loggedIn === false">
+                <span class="icon-arrow-up engagement-button ng-click-element" ng-click="c.goToLogin()"><span class="hover-text">Login to vote</span></span>
+              </span>
               <span class="engagement-button"><span class="comment-count">{{data.comments.length}} comment{{prompt.comments.length == 1 ? '' : 's'}}</span></span>
               <span class="engagement-button"ng-click="c.copyToClipboard(prompt.prompt)">Copy Prompt <span class="icon-document"></span></span>
               <span class="engagement-button"ng-click="c.copyToClipboard(data.thisUrl + 'ai?id=prompt&sys_id=' + prompt.sys_id, $event)">Copy Link <span class="icon-document"></span></span>
@@ -547,7 +606,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
       </div>
     </div>
     <div class="col-xs-12">
-      <div class="section-block block-main">
+      <div class="section-block block-main layered-box comment">
         <div ng-if="data.hide_comments">
           Comments have been hidden by moderators.
         </div>
@@ -555,19 +614,25 @@ For example: [INPUT YOUR NAME HERE]`;*/
           <span class="icon-cross-circle" ng-click="c.hideComments(data.sys_id)" ng-if="data.isMod === true && data.hide_comments == false" style="float: right">
             Hide comments (Mod)
           </span>
-          <div class="form-group">
-            <label for="multiLineTextBox">Add a comment:</label>
-            <textarea id="multiLineTextBox" class="form-control" rows="5" ng-model="data.userInput"></textarea>
-          </div>
-          <div class="prompt-button">
-            <button class="btn btn-primary" ng-click="c.submitComment(data.sys_id, data.userInput)" ng-class="{disabled: !data.userInput}">Submit</button>
-          </div>
-          <div ng-repeat="comment in data.comments">
-            <div>
-              {{comment[0]}}<br>
-              {{comment[1]}}
+          <button ng-if="data.loggedIn === false" class="btn btn-info" ng-click="c.goToLogin()">
+            Login to comment
+          </button>
+          <div ng-if="data.loggedIn === true">
+            <div class="form-group">
+              <label for="multiLineTextBox">Add a comment:</label>
+              <textarea id="multiLineTextBox" class="form-control" rows="5" ng-model="data.userInput"></textarea>
             </div>
-            <hr class="dashed" ng-if="$index != data.comments.length-1">
+            <div class="prompt-button">
+              <button class="btn btn-primary" ng-click="c.submitComment(data.sys_id, data.userInput)" ng-class="{disabled: !data.userInput}">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-repeat="comment in data.comments" class="comment">
+        <div class="section-block block-main layered-box">
+          <div>
+            {{comment[0]}}<br>
+            {{comment[1]}}
           </div>
         </div>
       </div>
