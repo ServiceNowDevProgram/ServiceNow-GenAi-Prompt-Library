@@ -625,14 +625,14 @@ For example: [INPUT YOUR NAME HERE]`;*/
         <sys_created_by>earl.duque</sys_created_by>
         <sys_created_on>2024-06-07 18:15:31</sys_created_on>
         <sys_id>0182c9d793ea0a10b653ffbd1dba10b1</sys_id>
-        <sys_mod_count>782</sys_mod_count>
+        <sys_mod_count>784</sys_mod_count>
         <sys_name>library</sys_name>
         <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
         <sys_policy/>
         <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
         <sys_update_name>sp_widget_0182c9d793ea0a10b653ffbd1dba10b1</sys_update_name>
         <sys_updated_by>earl.duque</sys_updated_by>
-        <sys_updated_on>2024-07-02 04:41:43</sys_updated_on>
+        <sys_updated_on>2024-07-15 17:49:31</sys_updated_on>
         <template><![CDATA[<div class="page-intro">
   <div ng-if="data.query || data.sort">
     <span class="icon-home home-button" ng-click="c.goHome()"> Go to Library home</span>
@@ -840,7 +840,7 @@ For example: [INPUT YOUR NAME HERE]`;*/
     </div>
     <div class="form-group">
       <label for="promptText">Your prompt:</label>
-      <textarea class="form-control" id="promptText" rows="3" ng-model="data.newPromptText"></textarea>
+      <textarea class="form-control" id="promptText" rows="3" ng-model="data.newPromptText" placeholder="Your actual, full prompt. Upon submission, a short description will be generated based on what you put here."></textarea>
     </div>
     <div>
     	Need some guidance? The RISEN framework helps structure tasks for generative AI into actionable steps:
