@@ -1,3 +1,0 @@
-```javascript
-const x = `sup`;
-```
