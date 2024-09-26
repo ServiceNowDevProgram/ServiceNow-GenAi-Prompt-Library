@@ -23,6 +23,7 @@ on:
 
 jobs:
   deployment:
+    if: github.repository == 'ServiceNowDevProgram/ServiceNow-GenAi-Prompt-Library'
     runs-on: ubuntu-latest
     steps:
     - name: Log payload
