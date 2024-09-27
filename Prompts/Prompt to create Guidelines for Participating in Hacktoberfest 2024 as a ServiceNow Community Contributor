@@ -1,0 +1,20 @@
+Hi, I need guidance on applying for Hacktoberfest 2024 as a ServiceNow Community member. I'm particularly interested in contributing to open-source projects related to ServiceNow during the event. Could you please provide me with specific steps on how to register, find suitable ServiceNow projects, and start contributing? Additionally, include any best practices I should follow to ensure my contributions are meaningful and align with Hacktoberfest guidelines."
+
+Example Response from AI:
+
+Registration for Hacktoberfest:
+Visit the official Hacktoberfest website and sign up using your GitHub or GitLab account.
+Opt-in for the event and agree to the participation guidelines.
+
+Finding ServiceNow Projects:
+Use GitHub's search functionality to find repositories tagged with #ServiceNow, #Hacktoberfest, or #NowPlatform.
+Check the ServiceNow Developer Program and forums for open-source projects looking for contributors.
+
+Contributing to Projects:
+Review the project’s "Contributing Guidelines" to understand the workflow and coding standards.
+Look for issues tagged with #GoodFirstIssue or #HelpWanted to start with easier tasks.
+
+Best Practices:
+Always open a pull request (PR) with a meaningful description of your changes.
+Ensure your code is properly tested and documented.
+Communicate with maintainers about your ideas and progress to avoid duplicate work.
