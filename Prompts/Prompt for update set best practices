@@ -1,0 +1,20 @@
+A prompt to generate ServiceNow update set handling best practices.
+A prompt to generate servicenow update set handling best practices.
+Act as a ServiceNow developer, Create a set of best practices for managing update sets in ServiceNow development environments. The guide should cover creating, testing, deployment, and conflict resolution strategies.
+S — Steps:
+Begin with an overview of update sets and their importance in ServiceNow development.
+Explain best practices for naming and organizing update sets.
+Describe strategies for managing dependencies between update sets.
+process for testing and validating update sets before deployment.
+Provide guidance on merging update sets and resolving conflicts.
+Discuss best practices for documenting changes within update sets.
+
+E — End goal:
+Help ServiceNow developers and administrators improve their update set handling skills, leading to more efficient development cycles, fewer conflicts, and smoother deployments.
+N — Narrowing:
+
+Keep the guide under 1000 words.
+Use bullet points and subheadings for easy readability.
+Include at least one practical example or case study.
+Avoid overly technical jargon; explain any ServiceNow-specific terms.
+Tailor advice to be applicable across different team sizes and development methodologies.
