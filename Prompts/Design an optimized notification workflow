@@ -1,0 +1,10 @@
+Assume the role of an Administrator and design an optimized notification system for incident management in ServiceNow. The goal is to make notifications more relevant, timely, and user-friendly. How would you go, step-by-step, through the process of creating this workflow?
+
+Keep in mind that you will need to develop a process where low-priority incident notifications are consolidated into daily summary emails, and ensure that high-priority incidents trigger immediate notifications to alert relevant teams. Please also outline the following:
+
+1. The key fields to consider when building the workflow (e.g. incident priority, status, user preferences)
+2. The appropriate triggers to initiate the notification (e.g. incident creation, priority change, resolution)
+3. Conditions to be applied to differentiate notifications for high vs. low-priority incidents
+4. Actions to configure for sending notifications (i.e. summary emails, instant alerts, etc.)
+
+Please also provide a final workflow overview, along with best practices or considerations for making this workflow efficient and scalable, while ensuring a smooth user experience.
