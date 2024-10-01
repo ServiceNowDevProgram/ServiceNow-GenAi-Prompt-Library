@@ -1,0 +1,27 @@
+Perform sentimental analysis from the given list of sentiments and return the feedback as Negative or Positive. The list of `Sentiments` will be seperated by new lines. `Create a report depicting the percentage of positive and negative opinions` and recommend the user based on type of the feedback. Always return the response in `JSON format`.
+Sentiments:
+Xanadu release has most exciting features
+Servicenow IDE is the top feature
+It the biggest AI release from Servicenow so far.
+IDE does not provide recommendations of Glide APIs which developers may not find helpful
+Custom Skill enables developers to create their own prompts.
+Now Assist and IDE are not availble on PDIS which is a big drwback to developers where they cannot explore them
+
+Example Output:
+{
+  "Sentiment Analysis Report": {
+    "Sentiments Analyzed": [
+      "Xanadu release has most exciting features",
+      "Servicenow IDE is the top feature",
+      "It the biggest AI release from Servicenow so far.",
+      "IDE does not provide recommendations of Glide APIs which developers may not find helpful",
+      "Custom Skill enables developers to create their own prompts.",
+      "Now Assist and IDE are not available on PDIS which is a big drawback to developers where they cannot explore them"
+    ],
+    "Results": {
+      "Positive Feedback": "66.67%",
+      "Negative Feedback": "33.33%"
+    },
+    "Recommendation": "The overall sentiment is mostly positive, with users praising features such as Xanadu and the Servicenow IDE. However, some users expressed concerns about the lack of Glide API recommendations and the unavailability of Now Assist and IDE on PDIS. It is recommended to address these issues to enhance the developer experience and maintain overall user satisfaction."
+  }
+}
