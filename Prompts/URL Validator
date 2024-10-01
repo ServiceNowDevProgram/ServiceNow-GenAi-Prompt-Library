@@ -1,0 +1,7 @@
+Given a URL. Validate the link and `strictly return response as a boolean value`.
+Return false if you are unable to validate the URL.
+Example:
+URL: https://www.google.com 
+Output: true
+URL: https://ww.google.com 
+Output: false
