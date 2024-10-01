@@ -1,0 +1,11 @@
+I want to set up Discovery on my ServiceNow Personal Development Instance (PDI) to perform infrastructure scans. Could you guide me through the required steps and configurations to enable Discovery? I need to know:
+
+1. MID Server Setup: How do I install and configure a MID Server on a local machine to connect with my PDI?
+2. Credentials: What credentials (e.g., SSH, SNMP, Windows) are required for Discovery, and how do I securely store them in ServiceNow?
+3. Discovery Schedule: How do I create and configure a Discovery schedule for scanning my local network?
+4. IP Range Configuration: How do I define the IP ranges that need to be discovered?
+5. Discovery Patterns: Are there any specific Discovery patterns I need to enable for local environments?
+6. Troubleshooting: What are common issues when setting up Discovery on a PDI, and how can I resolve them?
+7. Permissions: Do I need to set up any additional roles or permissions for Discovery to work?
+
+Please provide the detailed setup guide, including any required plugins or settings that need to be enabled in the PDI.
