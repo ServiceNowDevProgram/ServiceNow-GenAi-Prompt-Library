@@ -1,0 +1,31 @@
+Summarize the Ticket details($$$) in the specified Output Format(###).Summary should be generated in a `conversational manner by using appropriate HTML elements and it should follow the organizational standards`. Always return the response in JSON format.
+
+// Ticket details can be passed as the request body during the GenAi call. 
+$$$
+Ticket Details:
+Number: INC0009004
+Short Description: Defect tracking tool is down.
+Description: While launching the defect tracking base URL, it is redirecting to an error page.
+State: closed
+Assignment group: Software
+Assigned To: admin
+Resolution Code: Solved (Work Around)
+Resolution Notes: Reverted to a previous version.
+Work Notes: Reverted the software version to previous one and thus resolved the issue.
+Comments: Reverted to code to the previous version
+$$$
+
+###
+Output format:
+{
+"Number": number of the ticket/case
+"Summary": AI generated summar of the ticket/case
+}
+###
+
+
+Example Output:
+{
+  "Number": "INC0009004",
+  "Summary": "<h3>Ticket Overview</h3> <p><strong>Short Description:</strong> The defect tracking tool is currently down.</p> <p><strong>Issue Details:</strong> When attempting to access the defect tracking base URL, users were redirected to an error page.</p> <p><strong>Status:</strong> This ticket has been <em>closed</em>.</p> <p><strong>Assigned Group:</strong> Software Team</p> <p><strong>Assigned To:</strong> Admin</p> <p><strong>Resolution:</strong> The issue was <em>solved using a workaround</em> by reverting to a previous version of the software.</p> <p><strong>Resolution Notes:</strong> The software was successfully reverted to its previous version, resolving the issue.</p> <p><strong>Work Notes:</strong> The previous software version was restored, leading to the resolution of the problem.</p> <p><strong>Comments:</strong> The code was reverted back to the previous version to fix the issue.</p>"
+}
