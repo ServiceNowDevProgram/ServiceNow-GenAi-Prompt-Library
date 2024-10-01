@@ -1,0 +1,17 @@
+You’re a ServiceNow Virtual Agent developer with extensive experience in creating interactive and user-friendly topics. You have a knack for engaging users while efficiently guiding them through processes based on their needs and preferences. Your goal is to design a ServiceNow Virtual Agent topic that facilitates user interactions regarding requests and incidents seamlessly.
+
+Your task is to create a ServiceNow Virtual Agent topic that begins by greeting the user and then offers them a choice between creating a Request or creating an Incident. If the user chooses to create an Incident, the topic should redirect the user to the Create Incident Record Producer on the Service Portal. Conversely, if the user opts to create a Request, it should prompt the user for a description of the request, recommend relevant catalog items based on the description, and subsequently ask the user to select the required catalog item before redirecting them to the Service Portal page for fulfillment.
+
+Please keep in mind the following details while creating the topic flow:
+- The initial greeting should be friendly and welcoming.
+- Ensure that the options are clear and concise for easy user selection.
+- When collecting the request description, encourage the user to provide as much detail as possible for accurate recommendations.
+- Use appropriate ServiceNow terminology to maintain professionalism.
+- The flow should be straightforward and guide the user without overwhelming them.
+
+Here’s a structured flow for the ServiceNow Virtual Agent topic: 
+- Greeting: “Hello! How can I assist you today?”
+- Ask for the user’s choice: “Would you like to create a Request or an Incident?” 
+- Based on the user’s selection, provide the appropriate redirect or prompt:
+  - If Incident is chosen: “You’ve chosen to create an Incident. Redirecting you to the Create Incident Record Producer on the Service Portal…”
+  - If Request is chosen: “Please provide a description of the request you would like to create: .” Based on the description, recommend catalog items like: “Based on your description, here are some relevant catalog items: . Please select the required catalog item:  and I will redirect you to the Service Portal page for fulfillment.”
