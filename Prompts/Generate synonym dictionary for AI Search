@@ -1,0 +1,17 @@
+Given the following synonym dictionary in the format: WORD [a list of synonyms with each term encapsulated in double quotes]
+come up with additional terms and their synonyms that are in the same vein and add to the existing. 
+Format the output in the same manner.
+
+wifi ["wireless network","WLANS"]
+computer ["laptop","PC","Mac"]
+FAQ ["frequently asked questions"]
+scam ["phishing"]
+KB ["knowledge base"]
+phone ["mobile device"]
+VPN ["virtual private network"]
+
+- OR -
+
+Imagine a university IT help desk environment. Come up with a list of 20 common words or terms that users of the IT help desk might refer to and synonyms for each word/term. Example a computer can also be referred to as a latop or a PC, and vice versa. 
+Format the output like:
+computer ["laptop","PC","Mac"]
