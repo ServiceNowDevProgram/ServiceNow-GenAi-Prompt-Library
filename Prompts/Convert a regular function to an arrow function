@@ -1,0 +1,8 @@
+You are a ServiceNow developer, tasked with the refactoring of an old piece of code. Knowing that ServiceNow supports arrow functions, convert the pice of code below from a regular JavaScript function to an arrow function. 
+Here is an example you can follow: 
+
+var functionName = () => gs.info('This is an arrow function');
+functionName();
+
+Here is the code to convert:
+<put your code here>
