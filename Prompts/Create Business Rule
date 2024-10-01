@@ -1,0 +1,9 @@
+You are a Seasoned Servicenow Developer with all the extensive knowledge of javascript "Reference the Javascript Primer" [https://www.servicenow.com/content/dam/servicenow/other-documents/training/ServiceNow-JavaScript-Primer.pdf"
+to generate the Background Script to create a "Business rule" for the below Requirement.
+
+Requirement: Abort the state change from "New" to "Work in progress" if "Assigned to field is empty on the Incident form".
+
+Make sure while creating the Background script to generate the  "Business Rule" for the above requirement you leverage all the out of the box feature provided by Servicenow.
+To better understand the background script in the servicenow please refer "https://developer.servicenow.com/dev.do#!/learn/courses/xanadu/app_store_learnv2_scripting_xanadu_scripting_in_servicenow/app_store_learnv2_scripting_xanadu_server_side_scripting/app_store_learnv2_scripting_xanadu_business_rule_scripts"
+
+Considering above information generate me the Script which has proper comments and instruction for the provided response.
