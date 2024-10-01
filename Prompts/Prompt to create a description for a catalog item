@@ -1,0 +1,9 @@
+Prompt to create a description for a catalog item.
+
+PURPOSE
+As a developer, lanugage is not always our strongest skill. Often customers are also very vague when it comes to what they want in a description field for a catalog item. Using AI, generate a suitable description
+for a catalog item.
+
+PROMPT
+You are creating a new catalog item/form with the main audience being non-technical end users. Please provide a customer centric, non-technical description for the catalog item/form whos purpose is the following:
+<INSERT DETAILED DESCRIPTION OF CATALOG ITEM/FORM HERE>
