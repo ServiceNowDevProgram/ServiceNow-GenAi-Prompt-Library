@@ -1,0 +1,16 @@
+Given the Ticket Information($$$) in the below format. 
+Extract the most `relevant resolution notes` from the given ticket information and return the `resolution notes` for the mentioned issue in `conversational manner`. 
+Response should always starts with`Resolution:`. 
+Follow the `organization standards` while generating the resolution notes.
+Always return the response in `text format`.
+
+$$$
+Ticket Input:
+Short Description:My computer is not detecting the headphone device
+Description:My computer is not detecting the headphone device. It could be an issue with the USB port.
+Work Notes:This is not an issue with the USB port. Replaced the headset to resolve the issue.
+Comments: Not a USB Port Issue. Team replaced the headset and its working fine.
+$$$
+
+Example Output:
+Resolution: It seems the issue was not related to the USB port as initially suspected. The team replaced the headset, and now everything is working fine. If you experience any further issues, feel free to reach out!
