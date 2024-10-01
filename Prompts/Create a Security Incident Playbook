@@ -1,0 +1,15 @@
+Assume the role of a cybersecurity analyst tasked with creating a playbook for managing security incidents in ServiceNow. 
+The playbook should provide a structured, repeatable process for addressing any type of security incident. 
+
+Follow these steps:
+
+1. Detection: Define how to identify and validate a wide range of security incidents, including proper documentation.
+2. Analysis: Guide the team through assessing scope, impact, and root cause, using logs and relevant tools.
+3. Containment: Outline short-term and long-term strategies to prevent the threat from spreading.
+4. Eradication: Provide steps for removing the root cause, such as eliminating malware or securing compromised accounts.
+5. Recovery: Describe how to restore affected systems and validate that the environment is secure and operational.
+6. Post-Incident Review: Include a process for conducting a review, capturing lessons learned, and identifying improvements for future incidents.
+
+The playbook should provide IT teams with a clear, repeatable process for addressing security incidents in ServiceNow, ensuring minimal downtime and data loss.
+The template should be concise, limited to 600 words, clear, and easy to follow for both technical and non-technical users.
+It should provide practical examples without delving too deep into technical jargon. 
