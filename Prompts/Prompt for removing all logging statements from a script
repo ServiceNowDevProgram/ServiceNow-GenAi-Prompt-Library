@@ -1,0 +1,8 @@
+Prompt for removing all logging statements from a script.
+
+PURPOSE
+This prompt would assist developers who use logging statements to troubleshoot issues but forget to remove them from scripts before moving to production.
+
+PROMPT
+Review the JavaScript code in <INSERT RECORD HERE> and remove all logging statements that use the gs.log, gs.info, gs.debug, gs.logError and gs.logWarning functions.
+Provide the updated script back to me, identifying where logging statements have been removed.
