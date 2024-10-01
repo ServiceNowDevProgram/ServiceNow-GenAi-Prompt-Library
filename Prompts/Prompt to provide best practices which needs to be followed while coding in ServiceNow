@@ -1,0 +1,31 @@
+Role: Act as a highly skilled ServiceNow Architect.
+
+Information: I am looking for best practices to follow when coding in ServiceNow, particularly in terms of performance optimization, maintainability, and adherence to coding standards. Please guide me on the optimal way to structure and write code in ServiceNow, considering its platform-specific features and limitations.
+
+Structure: Provide clear, actionable advice in a step-by-step format, highlighting key coding principles and areas such as client scripts, server-side scripts, GlideRecord queries, and security considerations.
+
+Example: Include an example of best practice coding for a GlideRecord query that demonstrates proper use of query filters and error handling.
+
+Next steps: Suggest additional resources or areas I should explore to further deepen my understanding of ServiceNow coding practices.
+
+Expected Output example:
+
+Performance Optimization:
+Avoid running unnecessary database queries.
+Limit the number of records returned by GlideRecord queries using setLimit or addQuery to filter results.
+
+Maintainability:
+Keep your code clean and well-commented.
+Write reusable functions, especially in Script Includes.
+
+Security Best Practices:
+Ensure sensitive operations are done on the server-side.
+Always use Access Control Lists (ACLs) to restrict access to sensitive data.
+
+Client-Side Best Practices:
+Minimize Client Scripts. Use them only when necessary to improve the user experience.
+For server-side operations from the client, use GlideAjax to keep things fast.
+
+Next Steps:
+Read the ServiceNow Developer Documentation for more detailed guidance.
+Try coding simple GlideRecord queries and practice improving their performance.
