@@ -1,0 +1,9 @@
+Assume the role of an Analyst. Your assistance is required in generating a Dashboard and a report in ServiceNow to analyze various KPIs related to incident management. Outline, in detail, all the steps required to execute the following tasks effectively:
+
+1. Create two calculated fields that automatically calculate the time elapsed between when an incident status is marked as 'New' and when it is changed to 'Assigned To,' and the time elapsed between when the incident status is 'New' and when it is changed to 'Resolved', including any necessary queries or scripts.
+
+2. Create a dashboard that visualizes these calculated fields for each record, and categorizes the records according to priority. Identify and visualize trends in average incident resolution times by category over the past month. Note any significant spikes or patterns in the data and generate a report highlighting these.  
+
+3. Compile and analyze user feedback from resolved incidents, categorizing the feedback by sentiment (positive, negative, neutral) and correlating it with incident resolution times.
+
+Please provide the steps, queries, or scripts needed to create these reports and automate the process.
