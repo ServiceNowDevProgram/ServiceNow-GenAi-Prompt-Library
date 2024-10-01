@@ -1,0 +1,8 @@
+Assist me in automating the process of creating a comprehensive knowledge article in ServiceNow, using the resolution details from an incident or problem. Provide step-by-step guidance on:
+
+Extracting relevant information: How to identify and extract key details from incident or problem records that are essential for knowledge sharing.
+Formatting the article: Best practices for organizing the content, including structure, headings, bullet points, and clarity.
+Assigning categories and metadata: How to classify and categorize the article for easy retrieval in the knowledge base, including tags, categories, and metadata.
+Adhering to knowledge base standards: Ensuring the article complies with established knowledge base standards, such as readability, accuracy, and relevance.
+Streamlining the process: Automating the creation, approval, and publication of knowledge articles using Flow Designer, workflows, or other ServiceNow tools.
+Provide me with tips on writing clear, concise, and actionable knowledge articles that can be easily referenced in the future to resolve similar issues.
