@@ -1,0 +1,11 @@
+Assist me in understanding the best practices for writing Business Rules in ServiceNow. Please provide detailed guidance on:
+
+Naming conventions: How to establish clear and consistent naming conventions for Business Rules.
+Script optimization: Tips for optimizing scripts for performance and maintainability.
+Execution order: Recommendations on setting proper execution order (before, after, async, and display) based on the use case.
+Use of GlideRecord: Best practices for using GlideRecord efficiently, including avoiding unnecessary queries and writing effective condition checks.
+Performance considerations: Key factors to ensure high performance, such as reducing query overhead, minimizing loops, and preventing redundant updates.
+Setting conditions and actions: How to correctly configure conditions and actions within the Business Rule to ensure it runs only when necessary.
+Choosing rule types: When to use before, after, async, and display Business Rules, based on different scenarios and requirements.
+Testing and debugging: Best practices for testing Business Rules, logging results, and avoiding common pitfalls like inefficient loops, race conditions, or unoptimized queries.
+Your response should help me write efficient, scalable, and reliable Business Rules while avoiding common mistakes.
