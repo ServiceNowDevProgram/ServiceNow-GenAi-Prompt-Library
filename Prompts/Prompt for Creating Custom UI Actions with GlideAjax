@@ -1,0 +1,11 @@
+Assist me in the process of creating a custom UI Action in ServiceNow that triggers a GlideAjax call. Include detailed steps for:
+
+Building the Client-side UI Action Script: Show how to create a UI Action that triggers a GlideAjax call when clicked, including passing necessary parameters from the form or list view.
+
+Creating the Server-side Script Include: Guide me in setting up a Script Include to process the GlideAjax request, retrieve data from the database, and return the result back to the client.
+
+Handling the Response from the Server: Provide steps for processing the server’s response in the client-side script, including updating form fields or showing relevant messages based on the returned data.
+
+When to Use GlideAjax Over GlideRecord: Explain when GlideAjax should be used instead of GlideRecord for client-server communication, with a focus on improving performance by reducing database hits.
+
+Include an example of how to update a form field based on data returned from the server.
