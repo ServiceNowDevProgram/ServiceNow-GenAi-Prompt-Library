@@ -1,0 +1,8 @@
+Assist me in setting up a custom conversation flow for the Virtual Agent in ServiceNow. Guide me through the following steps:
+
+Define intents: Help me create and configure intents that match user inquiries, ensuring proper training phrases are set to accurately capture user input.
+Create dialog nodes: Walk me through building dialog nodes that provide relevant responses based on the identified intents, including prompts, questions, and conditional responses.
+Integrate backend services: Show me how to connect the conversation flow to backend systems or services, retrieving and displaying data dynamically based on user input (e.g., querying records, checking status).
+Test and optimize the flow: Provide guidance on testing the conversation flow in the Virtual Agent Simulator to ensure accuracy, completeness, and user satisfaction.
+Improve user experience: Offer best practices for making the conversation flow intuitive, responsive, and effective, ensuring minimal user confusion and improving engagement.
+Additionally, include strategies for handling complex conversations, error handling, and fallback options if user input is unclear or unsupported.
