@@ -1,0 +1,9 @@
+Prompt for summarising my assigned stories for a stand-up meeting.
+
+PURPOSE
+As a developer, I have already added all the necessary comments to my stories. This prompt should summarise the current status of my assigned stories using the state and notes fields on the records in order to 
+provide a summary that would be suitable to present in a stand-up.
+
+PROMPT
+You will be presenting a summary of agile stories during a stand-up meeting with the team. Please summarise all of my assigned stories, utilising fields such as state, work notes and comments, focussing on anything 
+that might be considered a blocker. Keep the response to something that can be presented in 2 to 3 minutes.

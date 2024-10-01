@@ -1,20 +1,50 @@
-# Contributing
+![promptlibrary Banner](https://github.com/user-attachments/assets/247f5479-90ce-4928-a15d-dabeab7797d8)
 
-## General requirements
+# Contributing to the ServiceNow's GenAI Prompt Library 🎉
 
-- Pull requests should be **only** to add or modify files inside the `Prompts` folder.
-- The filename **must** be a description of what the prompt does.
-- Filenames should not have special characters that are not allowed on normal file systems (eg. do not put ! in the file name).
-- No low-effort submissions.
-  - example of low-effort: "Generate discussion topics about ServiceNow"
-  - example of good-effort: including an example of what you are looking for, giving context of what this will be used for, giving a goal with the prompt, adding what kind of audience would be benefitting from this, etc.
+Thank you for your interest in contributing to the Prompt Library! We appreciate your help in making this resource better for everyone. 🙌
 
-## Recommendations
+## How to Contribute
 
-Need some guidance? The RISEN framework helps structure tasks for generative AI into actionable steps:
+### 1. Think of a Prompt 💭
 
-- **R** — Role: Define the AI's role. (e.g., "Act as an agile coach.")
-- **I** — Instructions: Provide clear instructions. (e.g., "Write a guide on crafting a good agile development story.")
-- **S** — Steps: Outline specific steps. (e.g., "Start with a user persona, describe the user's goal, list the tasks to achieve the goal, and define the acceptance criteria.")
-- **E** — End goal: State the goal and audience. (e.g., "Help team members understand how to write clear and effective agile stories.")
-- **N** — Narrowing: Add constraints. (e.g., "Max 800 words, avoid technical jargon, use practical examples.")
+Consider a prompt you frequently use in your day-to-day work as a ServiceNow professional. This could include:
+
+- Prompts that help write emails ✉️.
+- Prompts for generating specific code snippets 💻.
+- Prompts that assist in creating documentation 📚.
+- Prompts tailored for using providers like ChatGPT with your ServiceNow experience.
+
+For inspiration, you can view the top-voted prompts in the library [here](https://communityresources.service-now.com/ai?id=library&display=10&sort=true). 
+
+### 2. Submit a Prompt 📥
+
+To submit your prompt, follow these steps:
+
+#### Creating a New File
+
+1. **Fork the Repository:** Click the "Fork" button at the top right of this page to create your own copy of the repository.
+2. **Create a New Branch:** In your forked repository, create a new branch for your prompt submission.
+3. **Add a New File:** Navigate to the `Prompts` folder in your branch and create a new file. Make sure to follow the guidelines outlined below to ensure your submission is acceptable.  
+   ![Creating a file](https://github.com/user-attachments/assets/64a259da-7ff8-491c-91ba-eddf1414219e)
+4. **Submit a Pull Request:** Once your prompt is ready, submit a pull request to the main repository. One of our moderators will review your submission.
+
+<br />
+
+## Guidelines for Submission 📝
+
+- Ensure that your prompt is clear and concise.
+- Include any necessary context or examples to help others understand its use.
+- Follow the naming conventions and formatting as specified in the repository.
+
+<hr />
+
+### See Your Prompt Live 🌟
+
+Once your submission is accepted, it will immediately appear in the Prompt Library, which can be viewed at [Prompt Library](https://devlink.sn/PromptLibrary).
+
+![Result in Prompt Library](https://github.com/user-attachments/assets/d9606aec-da1c-400c-9ba8-273c663e9807)
+
+Any logged-in user will be able to comment on and vote for your submission, helping to highlight valuable prompts. 👍
+
+### Thank you for contributing to the Prompt Library! We look forward to seeing your creative prompts. 🚀
