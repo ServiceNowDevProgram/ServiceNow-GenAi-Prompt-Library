@@ -1,0 +1,5 @@
+Prompt for removing all instances of logging from a script.
+
+Review the JavaScript code in <INSERT RECORD HERE> and remove all instances of logging using the gs.log, gs.info, gs.debug, gs.logError and gs.logWarning functions.
+
+Provide the updated script back to me, identifying where logging statements have been removed.
