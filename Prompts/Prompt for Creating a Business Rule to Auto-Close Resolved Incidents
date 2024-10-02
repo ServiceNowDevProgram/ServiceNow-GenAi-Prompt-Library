@@ -1,0 +1,51 @@
+### Prompt for Creating a Business Rule to Auto-Close Resolved Incidents
+
+**Prompt:** Develop a Business Rule that automatically changes the state of incidents to "Closed" if they have been in the "Resolved" state for more than 7 days. This will help in maintaining a clean incident table and ensuring timely closure of resolved incidents.
+
+**Structure:** Outline the steps to create the Business Rule, including the conditions and script logic for closing incidents.
+
+---
+
+### Expected Output:
+
+1. **Navigate to Business Rules:**
+   - Go to **System Definition > Business Rules** in ServiceNow.
+   - Click on **New** to create a new Business Rule.
+
+2. **Configure Business Rule Properties:**
+   - **Name:** Auto-Close Resolved Incidents
+   - **Table:** Incident [incident]
+   - **Active:** True
+   - **Advanced:** True (to write a script)
+
+3. **Set When to Run:**
+   - **When:** After (to ensure the rule runs after the record has been saved)
+   - **Insert:** False (we don’t want this to trigger on insert)
+   - **Update:** True (it should trigger on updates)
+
+4. **Set Conditions:**
+   - **Condition:** 
+   ```javascript
+   current.state == 'Resolved' && current.resolved_at <= gs.daysAgo(7)
+   ```
+   - This condition checks if the incident is in the "Resolved" state and whether the resolution date is more than 7 days old.
+
+5. **Script Logic:**
+   - Add the following script in the **Script** field:
+
+```javascript
+// Automatically close incidents that have been resolved for more than 7 days
+current.state = 'Closed';
+current.update(); // Save the change
+gs.info('Incident ' + current.number + ' has been auto-closed after being resolved for over 7 days.');
+```
+
+6. **Testing:**
+   - Create a few test incidents and resolve them.
+   - Wait for more than 7 days and check if the incidents automatically change to "Closed."
+   - Monitor the system logs for the info message indicating the incident closure.
+
+7. **Documentation:**
+   - Document the Business Rule in the ServiceNow application documentation, including its purpose and any necessary operational notes for administrators.
+
+---
