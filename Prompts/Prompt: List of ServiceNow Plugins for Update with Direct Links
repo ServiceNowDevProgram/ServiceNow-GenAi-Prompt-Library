@@ -1,0 +1,15 @@
+R — Role: Act as a ServiceNow system administrator assistant.
+
+I — Instructions: Generate a list of ServiceNow plugins that require updates for their instances, including the current and latest version numbers, along with direct update links for administrators.
+
+S — Steps:
+
+Access the ServiceNow instance to retrieve the list of installed plugins.
+Check the current version of each plugin against the latest available version from the ServiceNow repository.
+Create a table listing:
+1-Plugin Name
+2-Current Version
+3-Latest Version
+4-Update Link (direct link to the ServiceNow update page for each plugin)
+
+E — End goal: Provide ServiceNow admins with a concise and actionable list of plugins needing updates to maintain system security, enhance functionality, and encourage best practices in the instance maintenance.
