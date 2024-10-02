@@ -1,0 +1,58 @@
+### Prompt for Creating a Scheduled Job to Archive Old Incidents
+
+**Prompt:** Develop a scheduled job that archives incidents older than one year into a separate archive table to keep the incident table manageable. The job should ensure that all relevant data is transferred, and the original incidents are deleted from the active incident table.
+
+**Structure:** Outline the steps to create the scheduled job, including the script logic for archiving incidents.
+
+---
+
+### Expected Output:
+
+1. **Navigate to Scheduled Jobs:**
+   - Go to **System Definition > Scheduled Jobs** in ServiceNow.
+   - Click on **New** to create a new scheduled job.
+
+2. **Configure Scheduled Job Properties:**
+   - **Name:** Archive Old Incidents
+   - **Active:** True
+   - **Run:** Periodically (set to run daily, weekly, etc. as per your organization’s requirements)
+
+3. **Set the Schedule:**
+   - Use the **Run** field to specify when the job should execute (e.g., daily at midnight).
+
+4. **Script Logic:**
+   - Add the following script in the **Script** field:
+
+```javascript
+// Create a GlideRecord for the incident table
+var grIncident = new GlideRecord('incident');
+grIncident.addQuery('sys_created_on', '<=', gs.daysAgo(365)); // Incidents older than 1 year
+grIncident.query();
+
+while (grIncident.next()) {
+    // Create a new record in the archive table
+    var grArchive = new GlideRecord('incident_archive'); // Assume this is your archive table
+    grArchive.initialize();
+    grArchive.short_description = grIncident.short_description;
+    grArchive.description = grIncident.description;
+    grArchive.state = grIncident.state;
+    grArchive.assigned_to = grIncident.assigned_to;
+    grArchive.resolved_at = grIncident.resolved_at;
+    // Add other necessary fields as required
+    grArchive.insert(); // Insert the archived record
+
+    // Delete the original incident
+    grIncident.deleteRecord();
+    gs.info('Archived and deleted incident: ' + grIncident.number);
+}
+```
+
+5. **Testing:**
+   - Create several test incidents with different created dates.
+   - Run the scheduled job manually to test the archiving process.
+   - Verify that old incidents have been archived correctly and deleted from the active table.
+
+6. **Documentation:**
+   - Document the scheduled job in the ServiceNow application documentation, including its purpose, schedule, and impact on incident management.
+
+---
