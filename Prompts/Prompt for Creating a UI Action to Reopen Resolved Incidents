@@ -1,0 +1,57 @@
+### Prompt for Creating a UI Action to Reopen Resolved Incidents
+
+**Prompt:** Develop a UI Action that enables users to reopen incidents that have been marked as "Resolved." This action should be visible only to users with specific roles (e.g., `itil`).
+
+**Structure:** Outline the steps to create the UI Action, including the script logic for reopening incidents and the conditions for visibility based on user roles.
+
+---
+
+### Expected Output:
+
+1. **Navigate to UI Actions:**
+   - Go to **System Definition > UI Actions** in ServiceNow.
+   - Click on **New** to create a new UI Action.
+
+2. **Configure UI Action Properties:**
+   - **Name:** Reopen Incident
+   - **Table:** Incident [incident]
+   - **Active:** True
+   - **Show insert:** False (only for updates)
+   - **Show update:** True (to allow updates)
+   - **Form button:** True (to appear as a button on the form)
+
+3. **Set Conditions:**
+   - **Condition:** 
+   ```javascript
+   current.state == 'Resolved' && (gs.hasRole('itil') || gs.hasRole('admin'))
+   ```
+   - This condition ensures that the action only appears for resolved incidents and is accessible to users with the `itil` or `admin` roles.
+
+4. **Script Logic:**
+   - Add the following script in the **Script** field:
+
+```javascript
+// Check if the current user has the appropriate role
+if (gs.hasRole('itil') || gs.hasRole('admin')) {
+    // Reopen the incident
+    current.state = 'In Progress';
+    current.update(); // Save the change
+    gs.addInfoMessage('Incident ' + current.number + ' has been reopened.');
+} else {
+    gs.addErrorMessage('You do not have permission to reopen this incident.');
+}
+```
+
+5. **User Experience:**
+   - Ensure that the UI Action button is clearly labeled "Reopen Incident."
+   - Test the action to confirm it only appears for users with the specified roles and that it correctly changes the incident's state.
+
+6. **Testing:**
+   - Log in as a user with the `itil` role and verify that the "Reopen Incident" button is visible on resolved incidents.
+   - Log in as a user without the role and confirm that the button is not visible.
+   - Test the functionality by reopening a resolved incident and checking if the state changes to "In Progress."
+
+7. **Documentation:**
+   - Document the UI Action in the ServiceNow application documentation, including its purpose and usage instructions for end users.
+
+---
