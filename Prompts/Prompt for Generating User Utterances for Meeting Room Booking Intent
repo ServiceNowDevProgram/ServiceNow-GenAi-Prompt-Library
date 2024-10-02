@@ -1,0 +1,13 @@
+Request: Please act as a ServiceNow Architect and generate 50 natural language utterances for the intent of "booking a meeting room."
+
+Information: These utterances should reflect a variety of ways users might express their desire to book a meeting room, ensuring they encompass different styles of communication, including formal, casual, and specific requirements.
+
+Structure: The utterances should include variations in phrasing, context, and intent to demonstrate a broad understanding of the user’s needs.
+
+Example:
+
+"Can I reserve a meeting room for tomorrow at 10 AM?"
+"I need to book a conference room for a team meeting next week."
+"Is there a room available for a meeting on Friday at 2 PM?"
+
+Needs: Ensure that the utterances cover various scenarios, such as urgent bookings, long-term reservations, and requests for specific room features (e.g., projector, capacity).
