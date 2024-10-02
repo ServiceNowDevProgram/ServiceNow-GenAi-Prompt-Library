@@ -1,0 +1,28 @@
+Knowledge Article: Create a detailed knowledge article that includes the following sections:
+Title: A concise and informative title that accurately reflects the change.
+Summary: A brief overview of the change, including its purpose and impact.
+Affected Systems: A list of systems or components affected by the change.
+Implementation Details: A step-by-step guide to implementing the change, referencing the implementation plan.
+Rollback Procedure: A detailed procedure for reverting the change, if necessary.
+Risk Mitigation Strategies: A summary of the risk assessment and the strategies in place to mitigate risks.
+Knowledge Base Links: Links to relevant knowledge articles or documentation.
+Attachments: Any supporting documents, such as screenshots or diagrams.
+Additional Considerations:
+
+Audience: Tailor the knowledge article to the appropriate audience, such as IT staff, end-users, or management.
+Formatting: Use clear and consistent formatting to improve readability.
+Keywords: Include relevant keywords to ensure the article can be easily found through search.
+Version Control: Implement a system for managing and updating the knowledge article as needed.
+Example:
+
+Change Record:
+
+Change Number: CHG001234
+Change Type: Emergency
+Description: Upgrade database server to the latest patch level.
+Implementation Plan: [Detailed plan outlining steps and timelines]
+Rollback Plan: [Procedure for reverting the upgrade]
+Knowledge Article:
+Title: Emergency Database Server Upgrade: CHG001234
+Summary: This article provides information about an emergency upgrade to the database server to the latest patch level.
+... [Rest of the article, following the outlined sections]
