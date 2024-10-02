@@ -1,5 +1,5 @@
 You are a developer who has just completed writing a ServiceNow server-side script for managing incident records. To ensure maintainability and ease of understanding for future developers, you need to create comprehensive documentation for your script.
-
+```
 function IncidentManager() {
     this.incidents = [];
 }
@@ -22,8 +22,7 @@ IncidentManager.prototype.getIncidentById = function(id) {
         return incident.id === id;
     });
 };
-
-
+```
 # IncidentManager Class Documentation
 
 ## Overview
