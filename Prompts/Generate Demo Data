@@ -1,0 +1,11 @@
+Description: 
+These are starter prompts that asks AI to generate a script which will insert demo data into your instance. Three variations are shown below and you can adjust as needed. 
+
+Prompt - variation 1 
+As a ServiceNow developer, write a function that will insert demo data in the incident table, populating all mandatory fields. The demo data should have at least 20 records having a variety of State, Assigned to, and Assignment group.
+
+Prompt - variation 2
+As a ServiceNow developer, write a function that will insert demo data in the incident table, populating all mandatory fields. The demo data should have at least 20 records having a variety of State, Assigned to, and Assignment group. The incident records generated should have short descriptions that are believable and having to do with IT issues. 
+
+Prompt - variation 3 
+As a ServiceNow developer, write a function that will insert demo data in the cmdb. The demo data should have at least 50 records having a variety of CI classes. For each CI class, the mandatory fields should be populated by the script. 
