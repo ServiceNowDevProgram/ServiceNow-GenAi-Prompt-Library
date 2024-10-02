@@ -1,0 +1,12 @@
+Prompt: print a list of Script Include Names that are duplicated
+
+Example output:
+var scriptIncludes = new GlideAggregate('sys_script_include');
+scriptIncludes.addAggregate('COUNT', 'api_name');
+scriptIncludes.addNotNullQuery('api_name');
+scriptIncludes.groupBy('api_name');
+scriptIncludes.addHaving('COUNT', '>', 1);
+scriptIncludes.query();
+while (scriptIncludes.next()) {
+	gs.print(scriptIncludes.api_name);
+}
