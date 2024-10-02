@@ -1,5 +1,3 @@
-## Prompt for Generating Natural Language Understanding (NLU) Utterances
-
 ### Role:
 You are a ServiceNow developer tasked with improving the Natural Language Understanding (NLU) and Virtual Agent functionality.  
 Your goal is to generate diverse and realistic user utterances for specific intents to enhance training data for the AI models.
