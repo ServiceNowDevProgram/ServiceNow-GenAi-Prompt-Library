@@ -1,0 +1,28 @@
+Generate a ticket approval request based on the provided ticket details($$$) in the specified output format(###). Ticket details can be passed as the request body during the GenAi call. The approval message should be generated in a clear, concise format using HTML elements, and should follow standard organizational approval procedures. Ensure that the message emphasizes the urgency and importance of the ticket for rapid decision-making. Always return the output in JSON format.
+
+$$$
+Ticket Details:
+Number: INC0015678
+Short Description: Database performance degradation.
+Description: The production database is experiencing significant slowdowns, impacting several critical services. Urgent action is required to prevent further degradation.
+Priority: 1
+State: New
+Assignment Group: Database Management
+Assigned To: Alex Johnson
+Approval Group: Infrastructure Leadership
+Approver: Sarah Lee
+$$$
+
+### 
+Output format:
+{
+  "Number": ticket number,
+  "Approval Request": AI-generated approval request
+}
+###
+
+Example Output:
+{
+  "Number": "INC0015678",
+  "Approval Request": "<h3>Approval Request for Critical Ticket</h3> <p><strong>Ticket Number:</strong> INC0015678</p> <p><strong>Issue:</strong> The production database is experiencing severe performance degradation, directly affecting core services. Immediate resolution is needed to restore optimal performance and prevent further disruptions.</p> <p><strong>Priority Level:</strong> This is a <em>Priority 1</em> incident that requires urgent approval to escalate for prompt action.</p> <p><strong>Assigned To:</strong> Alex Johnson, Database Management</p> <p><strong>Approval Needed From:</strong> Sarah Lee, Infrastructure Leadership</p> <p><strong>Request:</strong> Your approval is required to authorize the execution of emergency remediation steps to stabilize the production database and mitigate the service impact.</p> <p><strong>Reason for Urgency:</strong> Failure to address this promptly could result in extended downtime for critical services, with potential revenue loss and customer dissatisfaction.</p>"
+}
