@@ -1,0 +1,5 @@
+Hi, This Prompt will Automatically evaluate incoming incident data and user activity for potential risks by analyzing patterns, abnormal behavior, and system anomalies.
+Assign a severity level based on the impact on critical systems, number of affected users, and business continuity risks. 
+Generate a notification with a risk score, severity, and recommended mitigation steps to prevent escalation."
+
+This prompt focuses on identifying and assessing risks in real time, assigning appropriate severity levels, and proactively notifying the relevant teams with clear mitigation strategies.
