@@ -1,0 +1,31 @@
+Scenario: You're tasked with developing a new ServiceNow application to automate incident management processes. 
+You want to ensure that your development aligns with ServiceNow best practices to optimize performance, maintainability, and user experience.
+
+Question:
+What are the key ServiceNow development best practices that should be considered when building this incident management application?
+Please provide specific examples and recommendations, focusing on areas such as:
+
+Scripting:
+  How can I write efficient and reusable scripts?
+  What are the best practices for error handling and logging?
+  Are there any common scripting pitfalls to avoid?
+
+Data Modeling:
+  How should I design tables and fields to support the application's functionality?
+  What are the considerations for normalization and denormalization?
+  How can I optimize data retrieval and storage performance?
+
+UI Development:
+  What are the best practices for creating user-friendly and intuitive interfaces?
+H  ow can I leverage ServiceNow's built-in UI components effectively?
+  What are some common UI design mistakes to avoid?
+
+Performance Optimization:
+  How can I identify and address performance bottlenecks in my application?
+  What are the best practices for optimizing database queries and script execution?
+  Are there any specific ServiceNow features or settings that can improve performance?
+
+Testing and Quality Assurance:
+  What types of testing should I conduct to ensure the application's quality?
+  How can I effectively manage defects and track code changes?
+  What are some best practices for version control and collaboration?
