@@ -1,4 +1,4 @@
-![promptlibrary Banner](https://github.com/user-attachments/assets/247f5479-90ce-4928-a15d-dabeab7797d8)
+![promptlibrary Banner](https://github.com/ServiceNowDevProgram/Hacktoberfest/blob/main/images/promptlibrary-excluded.png)
 
 ## ⚠️ Unfortunately this repository got ${\color{red}excluded}$ from Hacktoberfest 2024. ⚠️
 ## As a result, while contributions are still accepted, they will _not count_ towards the completion of Hactoberfest 2024.
