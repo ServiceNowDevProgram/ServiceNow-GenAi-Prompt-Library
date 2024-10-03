@@ -1,0 +1,16 @@
+
+I am a playbook designer and automation developer in ServiceNow. I want to find out the and abstract the playbooks to make some automation process reusable in process automation designer. To make the flow/automation reusable, please also make them into subflow or action in flow designer.
+
+For example, indentify the abstraction point in the following 2 playbooks.
+
+Playbook 1
+
+1. EDR detected some abnormal activity and create a notable event in the ticketing system.
+2. Analyst found the activity to be malicious and perform a file hash blokcing on the EDR solution.
+3. Infected endpoint would require reimage. Kick off rebuild endpoint process for MS endpoint.
+
+Playbook 2
+
+1. An phishing alert ticket with a user clicked on phishing link detected.
+2. Analyst found the URL in the message body to be malicious and perform a proxy blocking and email sender blocking in Email security service.
+3. User credential compromised and would require a password reset in Azure AD. Kick off password reset process for Auzre AD.
