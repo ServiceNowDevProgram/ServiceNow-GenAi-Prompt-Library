@@ -1,5 +1,9 @@
 ![promptlibrary Banner](https://github.com/user-attachments/assets/247f5479-90ce-4928-a15d-dabeab7797d8)
 
+# :warning: Unfortunately this repository was _reported_ and got automatically** ${\color{red}excluded}$ **from Hacktoberfest 2024.<br>
+## As a result, while contributions are still accepted, they will _not count_ towards the completion of Hactoberfest 2024.
+
+
 This repository is an entry point to submit prompts directly from this GitHub repo, so that they can appear at https://devlink.sn/PromptLibrary
 
 The Prompt Library itself, is a community-driven hub for ServiceNow professionals to gather Generative AI prompts that we use to make our lives easier. **This is not a Now Assist product**. These are prompts we use inside GenAi Service Providers like ChatGPT, Claude Anthropic, or Google Gemini.
