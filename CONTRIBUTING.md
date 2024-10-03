@@ -1,5 +1,11 @@
 ![promptlibrary Banner](https://github.com/user-attachments/assets/247f5479-90ce-4928-a15d-dabeab7797d8)
 
+# :warning: Note about Hacktoberfest ⚠️
+## Unfortunately this repository was _reported_ and got ** ${\color{red}excluded}$ **from Hacktoberfest 2024.<br>
+### As a result, while contributions are still accepted, they will _not count_ towards the completion of Hactoberfest 2024.
+<br>
+<br>
+
 # Contributing to the ServiceNow's GenAI Prompt Library 🎉
 
 Thank you for your interest in contributing to the Prompt Library! We appreciate your help in making this resource better for everyone. 🙌
