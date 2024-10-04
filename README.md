@@ -1,7 +1,8 @@
 ![promptlibrary Banner](https://github.com/ServiceNowDevProgram/Hacktoberfest/blob/main/images/promptlibrary-excluded.png)
 
-## ⚠️ Unfortunately this repository got ${\color{red}excluded}$ from Hacktoberfest 2024. ⚠️
-## As a result, while contributions are still accepted, they will _not count_ towards the completion of Hactoberfest 2024.
+:warning::warning::warning:<br>
+## **Unfortunately, this repository is** ${\color{red}not}$ **available for participation in Hacktoberfest 2024. Contributions to this project will still be accepted for ServiceNow Community tracking but not for official Hacktoberfest participation.** (updated: 2024/10/03)<br>
+:warning::warning::warning:
 <br>
 <br>
 This repository is an entry point to submit prompts directly from this GitHub repo, so that they can appear at https://devlink.sn/PromptLibrary
