@@ -1,0 +1,57 @@
+### Prompt for Creating an Incident Trends Report
+
+**Prompt:** Develop a report that analyzes incident trends over the last quarter. The report should focus on the following aspects:
+- Distribution of incidents by priority level (e.g., Critical, High, Medium, Low).
+- Average resolution times for incidents by priority level.
+- Identification of any trends or patterns in incident resolution.
+
+**Structure:** Outline the steps required to gather the necessary data, analyze it, and present the findings in a visually appealing report format.
+
+---
+
+### Expected Output:
+
+1. **Define Report Scope:**
+   - Timeframe: Last quarter (e.g., July 1 - September 30).
+   - Data points to analyze:
+     - Number of incidents by priority level.
+     - Average resolution time by priority level.
+     - Trend analysis (e.g., increase/decrease in incidents over the quarter).
+
+2. **Gather Data:**
+   - Navigate to **Reports > Create New** in ServiceNow.
+   - Use the following filters in the report configuration:
+     - Table: **Incident**
+     - Condition: 
+       - `Opened on` is on or after the start date of the last quarter.
+       - `Opened on` is on or before the end date of the last quarter.
+     - Group by: `Priority`
+     - Calculate:
+       - Count of incidents.
+       - Average resolution time (using the `Resolved` and `Opened` fields).
+
+3. **Create the Report:**
+   - Choose the report type (e.g., Pie Chart, Bar Chart, or List).
+   - Set the report title (e.g., "Incident Trends Report - Last Quarter").
+   - Configure visualizations:
+     - Pie chart for the distribution of incidents by priority.
+     - Bar chart for average resolution times by priority level.
+
+4. **Analyze the Data:**
+   - Review the generated report to identify any significant trends:
+     - Which priority levels had the most incidents?
+     - Were there any priority levels that took significantly longer to resolve?
+     - Are there patterns that indicate recurring issues or bottlenecks?
+
+5. **Prepare the Report for Distribution:**
+   - Add an executive summary section that highlights key findings and recommendations.
+   - Include visual elements (charts, graphs) to enhance readability.
+   - Ensure the report is clear and concise for stakeholders.
+
+6. **Schedule and Share the Report:**
+   - Set up a schedule for the report to run automatically at the end of each quarter.
+   - Configure email notifications to send the report to relevant stakeholders.
+
+7. **Review and Iterate:**
+   - Gather feedback from stakeholders on the report's usefulness.
+   - Make necessary adjustments for future reports based on feedback.
