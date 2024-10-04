@@ -1,0 +1,47 @@
+#Prompt:
+
+As a ServiceNow developer, I need assistance in creating a Scripted REST API that enables external applications to retrieve incident details based on query parameters. The API should accept GET requests with optional parameters for priority, state, and assigned_to, returning a list of incidents in JSON format that match the criteria. It must implement error handling for invalid parameters, returning a 400 status code for bad requests and a 404 status code when no incidents are found. Additionally, the code should include logging to track API access attempts
+
+
+# Example AI Response:
+```javascript
+// Scripted REST API: Get Incidents
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    var gr = new GlideRecord('incident');
+    var query = [];
+    
+    if (request.queryParams.priority) {
+        query.push('priority=' + request.queryParams.priority);
+    }
+    if (request.queryParams.state) {
+        query.push('state=' + request.queryParams.state);
+    }
+    if (request.queryParams.assigned_to) {
+        query.push('assigned_to=' + request.queryParams.assigned_to);
+    }
+
+    if (query.length > 0) {
+        gr.addEncodedQuery(query.join('^'));
+    }
+
+    gr.query();
+    
+    var incidents = [];
+    while (gr.next()) {
+        incidents.push({
+            number: gr.getValue('number'),
+            short_description: gr.getValue('short_description'),
+            state: gr.getValue('state')
+        });
+    }
+
+    if (incidents.length === 0) {
+        response.setStatus(404);
+        response.setBody({ error: 'No incidents found.' });
+    } else {
+        response.setBody(incidents);
+    }
+    
+    gs.info('API accessed: ' + request.getRequestURL());
+})(request, response);'''
+
