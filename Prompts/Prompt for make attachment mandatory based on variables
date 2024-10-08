@@ -1,0 +1,37 @@
+Here's a ServiceNow GenAI prompt to generate code that makes an attachment mandatory based on a variable's value:
+
+
+---
+
+ServiceNow GenAI Prompt:
+
+"Generate a client-side script for a ServiceNow catalog item form that makes file attachments mandatory based on the value of a choice variable. If the user selects 'Yes' from the choice variable (e.g., variable name: 'attachment_required'), the system should prevent form submission and display an error message unless an attachment has been added."
+
+
+---
+
+This prompt will help the Generative AI generate a client-side script (likely JavaScript/GlideForm) that can be added to your catalog item for enforcing this condition.
+
+Alternatively, here's a sample script you can use directly:
+
+Sample Client Script (onSubmit)
+
+function onSubmit() {
+    var attachRequired = g_form.getValue('attachment_required');  // 'attachment_required' is the variable name
+    if (attachRequired == 'Yes') {
+        var attachments = g_form.getAttachments();
+        if (attachments.length == 0) {
+            g_form.addErrorMessage('Attachment is mandatory when you select "Yes". Please attach a file before submitting.');
+            return false;  // Prevent form submission
+        }
+    }
+    return true;
+}
+
+Variable Name: Change 'attachment_required' to match the actual name of your variable.
+
+Condition: Adjust the if (attachRequired == 'Yes') part if you have different options for the variable.
+
+
+This will display an error and prevent the form submission if there are no attachments when the user selects "Yes" in the specified choice field.
+
