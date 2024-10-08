@@ -1,0 +1,15 @@
+
+I am a playbook designer and automation developer in ServiceNow. My goal is to identify and abstract reusable components from playbooks to streamline automation processes in Process Automation Designer. To ensure the flow or automation is reusable, these components should be converted into subflows or actions within Flow Designer.
+
+For example, consider the following abstraction points in these two playbooks:
+
+Playbook 1:
+
+An EDR detects abnormal activity and creates a notable event in the ticketing system.
+The analyst determines the activity is malicious and performs a file hash block in the EDR solution.
+The infected endpoint requires reimaging. Initiate the rebuild process for the Microsoft endpoint.
+Playbook 2:
+
+A phishing alert is raised after a user clicks on a phishing link.
+The analyst identifies the URL in the message body as malicious and blocks the URL via proxy and the email sender in the email security service.
+The user's credentials are compromised, requiring a password reset in Azure AD. Initiate the password reset process in Azure AD.
