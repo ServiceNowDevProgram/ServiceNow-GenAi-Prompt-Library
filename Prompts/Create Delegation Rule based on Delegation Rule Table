@@ -1,0 +1,1 @@
+As a Delegator, I want to create a delegation rule which uses "Change_Request" as the delegation rule table and the delegation rule is applied only when change_state= Access.
