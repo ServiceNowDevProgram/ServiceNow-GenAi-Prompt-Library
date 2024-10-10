@@ -1,0 +1,14 @@
+Hi, Generate an incident report for all the groups I am part of. Include only the incidents assigned to my groups and organize the report in a tabular format with columns: Incident Number, Short Description, State, Priority, Assignment Group, and Created Date. Ensure the report includes both active and resolved incidents, sorted by Created Date in descending order."
+
+Sample Output:
+Incident Number	Short Description	State	Priority	Assignment Group	Created Date
+INC0012345	Login issue	Active	2 - High	IT Support	2024-10-10 14:35:00
+INC0012344	Network outage	Resolved	1 - Critical	Network Team	2024-10-09 16:20:00
+INC0012343	Software installation failure	Resolved	3 - Medium	Application Support	2024-10-08 11:15:00
+INC0012342	Printer not working	Active	4 - Low	Facilities	2024-10-07 09:00:00
+INC0012341	Email service disruption	Resolved	2 - High	Email Team	2024-10-06 15:45:00
+
+Explanation of the Sample Output:
+All the incidents present in the report are assigned to the groups which the user who prompted is a member of.
+
+This example illustrates how the AI would respond to the prompt by generating a structured incident report based on the incidents related to your groups. Let me know if you need any more help!
