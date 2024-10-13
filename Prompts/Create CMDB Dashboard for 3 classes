@@ -1,0 +1,5 @@
+As a CMDB manager i want to see a dashboard of CI classes Computer, Server & Router so that my user can see the data at one place.
+The dashboard contains the 3 different reports
+1 report for Computer, 2nd for Server and 3rd for Router which includes
+the fields Name - Class - Creation Date
+Sort by Creation Date
