@@ -1,0 +1,7 @@
+Prompt to generate backdated metrics instance.
+
+PURPOSE
+As a data analyst, I have created a new metrics definition to collect for my dashboard. This prompt should identify the datapoints from the definition and generates a script to generate metrics intance from existing records that matches the metrics definition in order to start making use of the metrics collected for dashboard.
+
+PROMPT
+You will be using a new metrics definition to track in the dashboard, do indicate the purpose of the metrics definition. Indicate the data source you are interested in and the expected metrics instance collected from the definition. Review the metrics instance generator script to ensure the output is aligned to the metrics instance records for the definition.
