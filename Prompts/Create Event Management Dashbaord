@@ -1,0 +1,31 @@
+Create an Event Management Dashboard in ServiceNow that visually represents the complete landscape of Events, Alerts, and Incidents. The dashboard should include the following components:
+
+    Overview Section:
+        Total number of Events processed.
+        Total number of Alerts generated from Events.
+        Total number of Incidents raised from Alerts.
+
+    Event Details:
+        A table or list displaying Events with attributes such as Event ID, Timestamp, Source, Severity, and Status.
+        Filters for Event Severity (Critical, Major, Minor) and Status (New, Acknowledged, Resolved).
+
+    Alert Analysis:
+        A bar chart comparing the number of Alerts generated over time (daily/weekly).
+        A breakdown of Alerts by type (e.g., System, Application, Network).
+        Trend analysis of Alerts leading to Incidents.
+
+    Incident Management:
+        A pie chart showing the distribution of Incidents created from Alerts by priority (High, Medium, Low).
+        A table of Incidents that have been escalated from Alerts, showing Incident ID, Related Alert, Current Status, and Assigned Group.
+
+    Real-time Notifications:
+        A section for real-time alerts that notifies users of critical Events or Incidents needing immediate attention.
+
+    Root Cause Analysis:
+        A section highlighting recurring Events and their corresponding Incidents to aid in root cause analysis.
+
+    Service Impact:
+        A visual representation of impacted services due to Events, showing dependencies and relationships.
+
+    Custom Filters:
+        Options for users to filter by date range, Event type, Alert status, and Incident priority.
