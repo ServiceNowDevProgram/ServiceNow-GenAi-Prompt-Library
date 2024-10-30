@@ -1,0 +1,12 @@
+Design a flow in Flow Designer that automates employee onboarding. It should follow below steps : 
+- Trigger when an employee onboarding request is created.
+- Retrieve employee details from the HR profile table.
+- Automatically provision IT assets and software based on role and department.
+- Generate security access requests according to predefined roles. 
+- Schedule onboarding sessions and send calendar invites
+- Notify the manager and IT department at each step
+- Include conditional steps for approvals or manual intervention 
+- Integrate with systems like Active Directory for seanless onboarding
+- Generate a report summarizing completed and pending tasks
+- Implement error handling for failed tasks and retries
+- Make sure the flow is scalable and customizable for different departments
