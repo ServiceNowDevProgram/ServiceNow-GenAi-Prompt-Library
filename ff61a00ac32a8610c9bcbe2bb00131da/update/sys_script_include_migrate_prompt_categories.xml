@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_ehd_servic_0.MigratePromptCategories</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Migration script to populate the many-to-many category table from existing prompt category field</description>
+        <name>MigratePromptCategories</name>
+        <script><![CDATA[var MigratePromptCategories = Class.create();
+MigratePromptCategories.prototype = {
+    initialize: function() {
+    },
+
+    /**
+     * Migrates existing single category relationships to the many-to-many table
+     * This should be run ONCE after the m2m table is created
+     *
+     * @return {Object} Migration results with counts
+     */
+    migrate: function() {
+        var results = {
+            totalPrompts: 0,
+            migratedPrompts: 0,
+            promptsWithoutCategory: 0,
+            duplicatesSkipped: 0,
+            errors: []
+        };
+
+        try {
+            gs.info('Starting migration of prompt categories to m2m table');
+
+            // Get all active prompts
+            var promptGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+            promptGr.addActiveQuery();
+            promptGr.query();
+
+            while (promptGr.next()) {
+                results.totalPrompts++;
+
+                try {
+                    var promptSysId = promptGr.getUniqueValue();
+                    var categorySysId = promptGr.getValue('category');
+
+                    // Skip if no category assigned
+                    if (!categorySysId || categorySysId === '') {
+                        results.promptsWithoutCategory++;
+                        gs.debug('Prompt ' + promptGr.getValue('number') + ' has no category, skipping');
+                        continue;
+                    }
+
+                    // Check if m2m record already exists (avoid duplicates)
+                    var checkGr = new GlideRecord('x_snc_ehd_servic_0_prompt_category_m2m');
+                    checkGr.addQuery('prompt', promptSysId);
+                    checkGr.addQuery('category', categorySysId);
+                    checkGr.query();
+
+                    if (checkGr.hasNext()) {
+                        results.duplicatesSkipped++;
+                        gs.debug('M2M record already exists for prompt ' + promptGr.getValue('number') + ', skipping');
+                        continue;
+                    }
+
+                    // Create m2m record
+                    var m2mGr = new GlideRecord('x_snc_ehd_servic_0_prompt_category_m2m');
+                    m2mGr.newRecord();
+                    m2mGr.setValue('prompt', promptSysId);
+                    m2mGr.setValue('category', categorySysId);
+                    m2mGr.insert();
+
+                    results.migratedPrompts++;
+
+                    if (results.migratedPrompts % 100 === 0) {
+                        gs.info('Migrated ' + results.migratedPrompts + ' prompts so far...');
+                    }
+
+                } catch (ex) {
+                    var errorMsg = 'Error migrating prompt ' + promptGr.getValue('number') + ': ' + ex.message;
+                    results.errors.push(errorMsg);
+                    gs.error(errorMsg);
+                }
+            }
+
+            gs.info('Migration complete! Total: ' + results.totalPrompts + ', Migrated: ' + results.migratedPrompts +
+                    ', Without Category: ' + results.promptsWithoutCategory + ', Duplicates Skipped: ' + results.duplicatesSkipped);
+
+        } catch (ex) {
+            results.errors.push('Fatal error during migration: ' + ex.message);
+            gs.error('Fatal error during migration: ' + ex.message);
+        }
+
+        return results;
+    },
+
+    /**
+     * Helper function to check migration status
+     *
+     * @return {Object} Status of migration
+     */
+    checkStatus: function() {
+        var status = {
+            totalPrompts: 0,
+            promptsWithCategory: 0,
+            m2mRecords: 0,
+            promptsNotInM2M: []
+        };
+
+        // Count total prompts
+        var promptGa = new GlideAggregate('x_snc_ehd_servic_0_prompt');
+        promptGa.addActiveQuery();
+        promptGa.addAggregate('COUNT');
+        promptGa.query();
+        if (promptGa.next()) {
+            status.totalPrompts = parseInt(promptGa.getAggregate('COUNT'));
+        }
+
+        // Count prompts with category
+        var categoryGa = new GlideAggregate('x_snc_ehd_servic_0_prompt');
+        categoryGa.addActiveQuery();
+        categoryGa.addNotNullQuery('category');
+        categoryGa.addAggregate('COUNT');
+        categoryGa.query();
+        if (categoryGa.next()) {
+            status.promptsWithCategory = parseInt(categoryGa.getAggregate('COUNT'));
+        }
+
+        // Count m2m records
+        var m2mGa = new GlideAggregate('x_snc_ehd_servic_0_prompt_category_m2m');
+        m2mGa.addAggregate('COUNT');
+        m2mGa.query();
+        if (m2mGa.next()) {
+            status.m2mRecords = parseInt(m2mGa.getAggregate('COUNT'));
+        }
+
+        // Find prompts with category but not in m2m (need migration)
+        var notMigratedGr = new GlideRecord('x_snc_ehd_servic_0_prompt');
+        notMigratedGr.addActiveQuery();
+        notMigratedGr.addNotNullQuery('category');
+        notMigratedGr.query();
+
+        while (notMigratedGr.next()) {
+            var promptSysId = notMigratedGr.getUniqueValue();
+
+            var m2mCheck = new GlideRecord('x_snc_ehd_servic_0_prompt_category_m2m');
+            m2mCheck.addQuery('prompt', promptSysId);
+            m2mCheck.query();
+
+            if (!m2mCheck.hasNext()) {
+                status.promptsNotInM2M.push(notMigratedGr.getValue('number'));
+            }
+        }
+
+        return status;
+    },
+
+    type: 'MigratePromptCategories'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-01-08 00:00:00</sys_created_on>
+        <sys_name>MigratePromptCategories</sys_name>
+        <sys_package display_value="ServiceNow GenAI Prompt Library" source="x_snc_ehd_servic_0">ff61a00ac32a8610c9bcbe2bb00131da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow GenAI Prompt Library">ff61a00ac32a8610c9bcbe2bb00131da</sys_scope>
+        <sys_update_name>sys_script_include_migrate_prompt_categories</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-01-08 00:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
