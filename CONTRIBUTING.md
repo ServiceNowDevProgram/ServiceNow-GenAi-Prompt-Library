@@ -23,6 +23,18 @@ Consider a prompt you frequently use in your day-to-day work as a ServiceNow pro
 
 For inspiration, you can view the top-voted prompts in the library [here](https://communityresources.service-now.com/ai?id=library&display=10&sort=true). 
 
+### Use the RISEN Framework 🧠
+
+For the best results, structure your prompts using the **RISEN framework**:
+
+- **Role** – Set the AI's expert persona
+- **Instructions** – State clearly what you want
+- **Steps** – List sequential actions for the AI to follow
+- **End Goal** – Define the desired output
+- **Narrowing** – Add constraints to keep the response focused
+
+Prompts following RISEN tend to get more upvotes in the library. 👍
+
 ### 2. Submit a Prompt 📥
 
 To submit your prompt, follow these steps:
